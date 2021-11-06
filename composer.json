@@ -1,0 +1,30 @@
+{
+    "name": "website/note",
+    "description": "aplicativo para anotações",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Yuri Sales de Oliveira",
+            "email": "yuri_oli@hotmail.com",
+            "role": "Programador",
+            "homepage": "https://www.facebook.com/profile.php?id=100052262689312"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source/"
+        },
+        "files": [
+            "source/config/app.php"
+        ]
+    },
+    "require": {
+        "league/route": "^5.1",
+        "laminas/laminas-diactoros": "^2.8",
+        "laminas/laminas-httphandlerrunner": "^2.1",
+        "league/container": "^4.1"
+    }
+}
