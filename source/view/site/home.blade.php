@@ -7,6 +7,16 @@
     <title>{{ $title }}</title>
 </head>
 <body>
-    Olá mundo !
+
+    <header class="main_header">
+
+            
+
+    </header>
+
+    <div class="notes">
+
+    </div>
+
 </body>
 </html>

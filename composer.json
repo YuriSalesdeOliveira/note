@@ -18,7 +18,8 @@
             "Source\\": "source/"
         },
         "files": [
-            "source/config/app.php"
+            "source/config/app.php",
+            "source/config/minify.php"
         ]
     },
     "require": {

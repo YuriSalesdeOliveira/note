@@ -7,6 +7,16 @@
     <title><?php echo e($title); ?></title>
 </head>
 <body>
-    Olá mundo !
+
+    <header class="main_header">
+
+            
+
+    </header>
+
+    <div class="notes">
+
+    </div>
+
 </body>
 </html><?php /**PATH /var/www/html/note/source/view/site/home.blade.php ENDPATH**/ ?>

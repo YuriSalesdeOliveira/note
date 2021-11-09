@@ -34,4 +34,5 @@ return array(
     '253c157292f75eb38082b5acb06f3f01' => $vendorDir . '/nikic/fast-route/src/functions.php',
     'e39a8b23c42d4e1452234d762b03835a' => $vendorDir . '/ramsey/uuid/src/functions.php',
     'bb80c70aff68d1318700c592e7d1f914' => $baseDir . '/source/config/app.php',
+    '70bef2d04bb5511bdf41a4456ae971bc' => $baseDir . '/source/config/minify.php',
 );
