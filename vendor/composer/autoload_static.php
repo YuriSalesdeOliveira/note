@@ -36,6 +36,7 @@ class ComposerStaticInitc5e1043ff844bf7dc4a521e5c36af617
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         'bb80c70aff68d1318700c592e7d1f914' => __DIR__ . '/../..' . '/source/config/app.php',
         '70bef2d04bb5511bdf41a4456ae971bc' => __DIR__ . '/../..' . '/source/config/minify.php',
+        'e4989fe449a3c3db820ec2a71f917971' => __DIR__ . '/../..' . '/source/config/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (

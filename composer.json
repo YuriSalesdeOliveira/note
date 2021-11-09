@@ -19,7 +19,8 @@
         },
         "files": [
             "source/config/app.php",
-            "source/config/minify.php"
+            "source/config/minify.php",
+            "source/config/helpers.php"
         ]
     },
     "require": {
