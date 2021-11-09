@@ -1,1 +1,1 @@
-*{margin:0;padding:0}
+*{margin:0;padding:0}:root{--dark_color:#000;--light_color:#fff}header.main_header{width:800px;height:50px;background-color:var(--dark_color)}
