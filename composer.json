@@ -25,6 +25,7 @@
         "ipub/slim-router": "^0.2.0",
         "laminas/laminas-diactoros": "^2.8",
         "laminas/laminas-httphandlerrunner": "^2.1",
-        "jenssegers/blade": "^1.4"
+        "jenssegers/blade": "^1.4",
+        "matthiasmullie/minify": "^1.3"
     }
 }
