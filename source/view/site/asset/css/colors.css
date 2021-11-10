@@ -1,7 +1,17 @@
 :root {
 
+    --green_color: #4aac71;
+    --green_color_dark: #439b66;
+
+    --gray_color: #777374;
+    --gray_color_light: #8d898a;
+    --gray_color_light_01: #a8a3a4;
+    --gray_color_light_02: #b9b2b3;
+    --gray_color_light_03: #d8d0d1;
+
     --dark_color: #000;
 
+    --light_color_dark: #f8f8f8;
     --light_color: #fff;
 
 }
