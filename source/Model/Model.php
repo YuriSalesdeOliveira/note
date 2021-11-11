@@ -1,13 +1,12 @@
 <?php
 
-namespace Source\Models;
+namespace Source\Model;
 
 use PDO;
 use Exception;
 use PDOStatement;
+use Source\Database\MysqlConnection;
 use Source\Traits\Attributes;
-use Source\Database\PDOConnection;
-use Source\Database\Interfaces\Connection;
 
 abstract class Model
 {
@@ -24,17 +23,17 @@ abstract class Model
     {
         $this->attributes = $attributes;
 
-        $this->connection = (new PDOConnection)->connection();//mudar o nome da classe do banco
+        $this->connection = (new MysqlConnection())->connection();
     }
 
-    public function save()
+    public function save(): bool
     {
         if (isset($this->{static::$primary})) return $this->update();
 
         return $this->insert();
     }
 
-    protected function insert()
+    protected function insert(): bool
     {
         $this->timestamp('insert');
 
@@ -52,7 +51,7 @@ abstract class Model
         return false;
     }
 
-    protected function update()
+    protected function update(): bool
     {
         $this->timestamp('update');
 
@@ -174,3 +173,8 @@ abstract class Model
         return substr($sql, 0, -1);
     }
 }
+
+// ver a possibilidade de transferir a responsabilidade de efetivamente
+// fazer as consultas etc.. para a classe database
+// tenho em mente que não preciso guardar o statement visto que o proprio
+// objeto model manteria o objeto pdo que teria o statement

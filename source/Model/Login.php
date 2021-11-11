@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Models;
+namespace Source\Model;
 
 use Source\Exceptions\AppException;
 

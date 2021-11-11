@@ -100,6 +100,16 @@
         </a>
 
     </div>
+
+    <div class="modal_add_note">
+        <form action="{{}}" method="post">
+
+            <input type="text" name="title" placeholder="Titulo">
+
+            <textarea name="content" cols="30" rows="10"></textarea>
+
+        </form>
+    </div>
     
 </body>
 </html>
