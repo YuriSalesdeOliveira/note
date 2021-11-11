@@ -2,7 +2,7 @@
 
 namespace Source\Model;
 
-class Note
+class Note extends Model
 {
     protected static string $entity = 'notes';
     protected static array $columns = [

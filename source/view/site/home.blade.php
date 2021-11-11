@@ -29,75 +29,18 @@
 
     <div class="notes">
 
-        <a href="javascript:">
-            <div class="notes_item">
-                <div class="notes_item_content">
-                    Logotipo da igreja. Cruz, música, notas musicais,
-                    música, coro, pessoas, vermelho imagem vetorial sem royalties 86738820 ⬇ Baixe vetores da ...
+        @foreach ($notes as $note)
+        
+            <a href="javascript:">
+                <div class="notes_item">
+                    <div class="notes_item_content">
+                        {{ $note->content }}
+                    </div>
+                    <div class="notes_item_title">{{ $note->title }}</div>
                 </div>
-                <div class="notes_item_title">Lista de compras</div>
-            </div>
-        </a>
+            </a>
 
-        <a href="javascript:">
-            <div class="notes_item">
-                <div class="notes_item_content">
-                    Logotipo da igreja. Cruz, música, notas musicais,
-                    música, coro, pessoas, vermelho imagem vetorial sem royalties 86738820 ⬇ Baixe vetores da ...
-                </div>
-                <div class="notes_item_title">Lista de compras</div>
-            </div>
-        </a>
-
-        <a href="javascript:">
-            <div class="notes_item">
-                <div class="notes_item_content">
-                    Logotipo da igreja. Cruz, música, notas musicais,
-                    música, coro, pessoas, vermelho imagem vetorial sem royalties 86738820 ⬇ Baixe vetores da ...
-                </div>
-                <div class="notes_item_title">Lista de compras</div>
-            </div>
-        </a>
-
-        <a href="javascript:">
-            <div class="notes_item">
-                <div class="notes_item_content">
-                    Logotipo da igreja. Cruz, música, notas musicais,
-                    música, coro, pessoas, vermelho imagem vetorial sem royalties 86738820 ⬇ Baixe vetores da ...
-                </div>
-                <div class="notes_item_title">Lista de compras</div>
-            </div>
-        </a>
-
-        <a href="javascript:">
-            <div class="notes_item">
-                <div class="notes_item_content">
-                    Logotipo da igreja. Cruz, música, notas musicais,
-                    música, coro, pessoas, vermelho imagem vetorial sem royalties 86738820 ⬇ Baixe vetores da ...
-                </div>
-                <div class="notes_item_title">Lista de compras</div>
-            </div>
-        </a>
-
-        <a href="javascript:">
-            <div class="notes_item">
-                <div class="notes_item_content">
-                    Logotipo da igreja. Cruz, música, notas musicais,
-                    música, coro, pessoas, vermelho imagem vetorial sem royalties 86738820 ⬇ Baixe vetores da ...
-                </div>
-                <div class="notes_item_title">Lista de compras</div>
-            </div>
-        </a>
-
-        <a href="javascript:">
-            <div class="notes_item">
-                <div class="notes_item_content">
-                    Logotipo da igreja. Cruz, música, notas musicais,
-                    música, coro, pessoas, vermelho imagem vetorial sem royalties 86738820 ⬇ Baixe vetores da ...
-                </div>
-                <div class="notes_item_title">Lista de compras</div>
-            </div>
-        </a>
+        @endforeach
 
     </div>
 
