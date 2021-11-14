@@ -3,8 +3,7 @@
 define('DEVELOPMENT', $_SERVER['SERVER_NAME'] === 'localhost' ? true : false);
 
 define('SITE', [
-    'root' => 'http://localhost/note/public/',
-    'base' => '/note/public'
+    'root' => 'http://localhost/note/public',
 ]);
 
 define('PATH', [

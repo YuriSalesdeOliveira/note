@@ -16,4 +16,13 @@ if (DEVELOPMENT) {
     $minCSS->add(PATH['view'] . '/site/asset/css/main.css');
     $minCSS->minify(PATH['public'] . '/site/asset/css/style.min.css');
 
+    /**
+     * SITE
+     * js
+     */
+
+    $minJS = new JS();
+    $minJS->add(PATH['view'] . '/site/asset/js/modal.js');
+    $minJS->minify(PATH['public'] . '/site/asset/js/main.js');
+
 }

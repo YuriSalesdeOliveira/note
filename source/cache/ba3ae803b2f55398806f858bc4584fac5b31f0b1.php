@@ -19,7 +19,7 @@
 
         <div class="main_header_actions">
 
-            <a href="javascript:">adicionar</a>
+            <a class="add_note_button" href="javascript:">adicionar</a>
 
             <i class='bx bx-dots-vertical-rounded'></i>
 
@@ -45,15 +45,35 @@
 
     </div>
 
-    <div class="modal_add_note">
-        <form action="{{}}" method="post">
+    <div class="modal_container">
 
-            <input type="text" name="title" placeholder="Titulo">
+        <div class="modal_body">
 
-            <textarea name="content" cols="30" rows="10"></textarea>
+            <div class="modal_add_note">
 
-        </form>
+                <form action="" method="post">
+    
+                    <input type="text" name="title" placeholder="Titulo">
+        
+                    <textarea name="content" cols="30" rows="10" placeholder="Conteúdo"></textarea>
+    
+                    <div class="modal_add_note_actions">
+    
+                        <button type="submit">
+                            <i class='bx bxs-save'></i>
+                        </button>
+    
+                    </div>
+    
+                </form>
+    
+            </div>
+
+        </div>
+        
     </div>
     
+    <script src="<?php echo e(assets('site/asset/js/main.min.js')); ?>"></script>
+
 </body>
 </html><?php /**PATH /var/www/html/note/source/view/site/home.blade.php ENDPATH**/ ?>

@@ -4,3 +4,19 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+textarea,
+input {
+    padding: 0 5px;
+}

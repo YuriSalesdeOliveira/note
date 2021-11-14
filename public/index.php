@@ -1,21 +1,35 @@
 <?php
 
+use CoffeeCode\Router\Router;
+
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
-use IPub\SlimRouter\Routing\Router;
-use Laminas\Diactoros\ServerRequestFactory;
-use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
+$router = new Router(SITE['root']);
 
-$request = ServerRequestFactory::fromGlobals(
-    $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
-);
+$router->namespace('Source\Http\Controller\Site');
 
-$router = new Router();
+/**
+ * SITE
+ */
 
-$router->setBasePath(SITE['base']);
+$router->get('/', 'Site:home', 'site.home');
 
-$router->get('/', 'Source\Http\Controller\Site\Site:home')->setName('site.home');
+/**
+ * AUTH
+ */
 
-$response = $router->handle($request);
+$router->post('/', 'Auth:storeNote', 'auth.storeNote');
 
-(new SapiEmitter)->emit($response);
+/**
+ * ERROR
+ */
+
+$router->namespace('Source\Http\Controller');
+
+$router->get('/oops/{errcode}', 'App:error', 'app.error');
+
+$router->dispatch();
+
+if ($router->error()) {
+    $router->redirect('app.error', ['errcode' => $router->error()]);
+}
