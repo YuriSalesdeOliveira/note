@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo e(assets('site/asset/css/style.min.css')); ?>">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <title><?php echo e($title); ?></title>
+    <title>Aplicativo de notas</title>
 </head>
 <body>
 
@@ -51,7 +51,7 @@
 
             <div class="modal_add_note">
 
-                <form action="" method="post">
+                <form action="<?php echo e($router->route('auth.storeNote')); ?>" method="post">
     
                     <input type="text" name="title" placeholder="Titulo">
         
