@@ -2,14 +2,23 @@
 
 define('DEVELOPMENT', $_SERVER['SERVER_NAME'] === 'localhost' ? true : false);
 
+define('LANGUAGE', 'pt-br');
+
+if (!DEVELOPMENT) {
+
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 1);
+}
+
 define('SITE', [
     'root' => 'http://localhost/note/public',
 ]);
 
 define('PATH', [
+    'public' => dirname(dirname(__DIR__)) . '/public',
     'view' => dirname(__DIR__) . '/view',
     'cache' => dirname(__DIR__) . '/cache',
-    'public' => dirname(dirname(__DIR__)) . '/public'
+    'language' => dirname(__DIR__) . '/language'
 ]);
 
 define("DB_CONNECTION_CONFIG", [

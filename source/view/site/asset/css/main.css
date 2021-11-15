@@ -12,6 +12,12 @@ body {
     align-items: center;
 }
 
+[centralize] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 :root {
     --base_width: 800px;
 }

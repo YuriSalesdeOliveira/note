@@ -18,6 +18,7 @@ $router->namespace('Source\Http\Controller\Site');
 $router->group(null);
 
 $router->get('/', 'Site:home', 'site.home');
+$router->get('/entrar', 'Site:login', 'site.login');
 
 /**
  * AUTH
@@ -26,6 +27,7 @@ $router->get('/', 'Site:home', 'site.home');
 $router->group('/nota');
 
 $router->post('/', 'Auth:storeNote', 'auth.storeNote');
+$router->post('/', 'Auth:login', 'auth.login');
 
 /**
  * ERROR
