@@ -38,7 +38,7 @@
 
         @foreach ($notes as $note)
         
-            <a href="javascript:" class="notes_item">
+            <a href="javascript:" class="notes_item" data-note_id="{{ $note->id }}">
                 <div class="notes_item_content">
                     {{ $note->content }}
                 </div>

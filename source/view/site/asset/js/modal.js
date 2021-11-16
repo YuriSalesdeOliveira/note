@@ -4,16 +4,25 @@
     {
         var modal =  document.querySelector(`.${modalContainer}`);
 
+        let form = modal.querySelector('form');
+
+        let input = form.querySelector('input');
+        let textarea = form.querySelector('textarea');
+
+        (function removeContent()
+        {
+            input.value = null;
+            textarea.value = null;
+        })()
+
         modal.classList.add('modal_show');
 
         modal.addEventListener('click', (e) => {
 
-            classes = e.target.className.split(' ');
+            if (e.target.classList.contains(modalContainer)) {
 
-            if (classes[0] == modalContainer) {
                 modal.classList.remove('modal_show');
             }
-
         });
     }
 

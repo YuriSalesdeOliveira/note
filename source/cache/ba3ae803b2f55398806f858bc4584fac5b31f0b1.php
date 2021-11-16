@@ -38,7 +38,7 @@
 
         <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
-            <a href="javascript:" class="notes_item">
+            <a href="javascript:" class="notes_item" data-note_id="<?php echo e($note->id); ?>">
                 <div class="notes_item_content">
                     <?php echo e($note->content); ?>
 

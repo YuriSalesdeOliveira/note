@@ -82,15 +82,15 @@ class Auth extends Controller
     public function storeNote($data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
-
-        $note = new Note();
-        $note->title = $data['title'];
-        $note->content = $data['content'];
+        
+        $note = new Note($data);
 
         if ($note->save())
-            $this->router->redirect('site.home');
+            flashAdd(['add_note' => 'Nota salva com sucesso.'], 'success');
+        else
+            flashAdd(['add_note' => 'Erro ao salvar a nota.']);
 
-        // erro ao salvar
+        $this->router->redirect('site.home');
     }
 
     public function logout(): void
