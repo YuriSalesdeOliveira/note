@@ -10,13 +10,13 @@
 </head>
 <body centralize>
     <div class="login_card">
-        <div class="login_card_header">
+        <div class="card_header">
 
             <i class='bx bxs-notepad' ></i>
             Notes
 
         </div>
-        <div class="login_card_body" centralize>
+        <div class="card_body" centralize>
 
             <form action="{{ $router->route('auth.login') }}" method="post">
     
@@ -24,7 +24,7 @@
                     <div class="message highlight-error">
                         {{ $error }}
                     </div>
-                @endif
+                @endif  
 
                 <div class="form_item">
                     <label for="email">E-mail</label>
@@ -44,12 +44,14 @@
                     </div>
                 </div>
         
-                <button type="submit">entrar</button>
+                <button type="submit">Entrar</button>
         
             </form>
 
+            <a href="{{ $router->route('web.register') }}" class="button_register">registre-se</a>
+
         </div>
-        <div class="login_card_footer">
+        <div class="card_footer">
             Copyright © 2021 Notes
         </div>
     </div>

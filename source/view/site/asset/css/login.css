@@ -1,3 +1,14 @@
+div.register_card {
+    width: 30%;
+    min-width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-rows: 80px 1fr 50px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0, .2);
+}
+
 div.login_card {
     width: 30%;
     min-width: 500px;
@@ -9,7 +20,7 @@ div.login_card {
     box-shadow: 0 0 5px rgba(0,0,0, .2);
 }
 
-div.login_card div.login_card_header {
+div.card_header {
     user-select: none;
     position: relative;
     display: flex;
@@ -19,11 +30,11 @@ div.login_card div.login_card_header {
     color: var(--gray_color_light_01);
 }
 
-div.login_card div.login_card_header i {
+div.card_header i {
     font-size: 3rem;
 }
 
-div.login_card div.login_card_header::after {
+div.card_header::after {
     content: '';
     position: absolute;
     width: 90%;
@@ -32,19 +43,25 @@ div.login_card div.login_card_header::after {
     background-color: var(--light_color_dark_01);
 }
 
-div.login_card_body form {
+div.card_body {
+    display: flex;
+    flex-direction: column;
+}
+
+div.card_body form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
-div.login_card_body form input {
+div.card_body form input {
     width: 100%;
     height: 30px;
 }
 
-div.login_card_body form button {
+div.card_body form button {
     width: 100%;
     height: 40px;
     font-size: .9rem;
@@ -52,11 +69,20 @@ div.login_card_body form button {
     background-color: var(--green_color_dark);
 }
 
-div.login_card_body form div.form_item {
+div.card_body form div.form_item {
     margin-bottom: 20px;
 }
 
-div.login_card div.login_card_footer {
+div.card_body a.button_register {
+    font-size: .9rem;
+    color: var(--gray_color);
+}
+
+div.card_body a.button_register:hover {
+    text-decoration: underline;
+}
+
+div.card_footer {
     display: flex;
     justify-content: center;
     align-items: center;

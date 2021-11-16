@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo e(assets('site/asset/css/style.min.css')); ?>">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <title>Aplicativo de notas - login</title>
+    <title>Aplicativo de notas - registrar</title>
 </head>
 <body centralize>
-    <div class="login_card">
+    <div class="register_card">
         <div class="card_header">
 
             <i class='bx bxs-notepad' ></i>
@@ -18,14 +18,31 @@
         </div>
         <div class="card_body" centralize>
 
-            <form action="<?php echo e($router->route('auth.login')); ?>" method="post">
+            <form action="<?php echo e($router->route('auth.register')); ?>" method="post">
     
-                <?php if($error = flashGet('error', 'login')): ?>
+                <?php if($error = flashGet('error', 'register')): ?>
                     <div class="message highlight-error">
                         <?php echo e($error); ?>
 
                     </div>
-                <?php endif; ?>  
+                <?php endif; ?>
+                <?php if($message = flashGet('success', 'register')): ?>
+                    <div class="message highlight-success">
+                        <?php echo e($message); ?>
+
+                    </div>
+                <?php endif; ?>
+
+
+                <div class="form_item">
+                    <label for="name">Nome</label>
+                    <input type="text" name="name">
+
+                    <div class="message lowlight-error">
+                        <?php echo e(flashGet('error', 'name')); ?>
+
+                    </div>
+                </div>
 
                 <div class="form_item">
                     <label for="email">E-mail</label>
@@ -47,11 +64,11 @@
                     </div>
                 </div>
         
-                <button type="submit">Entrar</button>
+                <button type="submit">Cadastrar</button>
         
             </form>
 
-            <a href="<?php echo e($router->route('web.register')); ?>" class="button_register">registre-se</a>
+            <a href="<?php echo e($router->route('web.login')); ?>" class="button_register">entrar</a>
 
         </div>
         <div class="card_footer">
@@ -59,4 +76,4 @@
         </div>
     </div>
 </body>
-</html><?php /**PATH /var/www/html/note/source/view/site/login.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /var/www/html/note/source/view/site/register.blade.php ENDPATH**/ ?>

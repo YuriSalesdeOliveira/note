@@ -50,25 +50,49 @@ header.main_header div.main_header_actions {
     align-items: center;
 }
 
-div.main_header_actions a {
+div.main_header_actions a.add_note_button {
     padding: 5px 10px;
     margin-right: 5px;
     color: var(--light_color);
     background-color: var(--green_color);
 }
 
-div.main_header_actions a:hover {
+div.main_header_actions a.add_note_button:hover {
     transition: all linear .4s;
     background-color: var(--green_color_dark);
 }
 
-div.main_header_actions i {
+div.main_header_actions div.profile {
+    position: relative;
+}
+
+div.profile i {
+    cursor: pointer;
     font-size: 1.2rem;
     color: var(--gray_color);
 }
 
-div.main_header_actions i:hover {
-    cursor: pointer;
+div.profile nav.profile_dropdown {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0, .5);
+    background-color: #fff;
+}
+
+div.profile nav.profile_dropdown a {
+    padding: 5px 10px;
+    color: var(--gray_color_light);
+}
+
+div.profile nav.profile_dropdown a:hover {
+    color: var(--gray_color);
+}
+
+div.profile nav.profile_dropdown.show {
+    display: flex;
 }
 
 div.notes {
@@ -79,7 +103,7 @@ div.notes {
     padding: 0 10px;
 }
 
-div.notes div.notes_item {
+div.notes a.notes_item {
     position: relative;
     height: 180px;
     border-radius: 5px;
@@ -87,7 +111,7 @@ div.notes div.notes_item {
     box-shadow: 0 1px 3px rgba(0,0,0, .5);
 }
 
-div.notes div.notes_item:hover {
+div.notes a.notes_item:hover {
     background-color: var(--light_color_dark);
 }
 

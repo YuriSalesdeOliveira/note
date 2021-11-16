@@ -21,7 +21,14 @@
 
             <a class="add_note_button" href="javascript:">adicionar</a>
 
-            <i class='bx bx-dots-vertical-rounded'></i>
+            <div class="profile">
+                <i class='bx bx-dots-vertical-rounded profile_dropdown_button'></i>
+
+                <nav class="profile_dropdown">
+                    <a href="{{ $router->route('site.profile') }}" class="profile_dropdown_item">Perfil</a>
+                    <a href="{{ $router->route('auth.logout') }}" class="profile_dropdown_item">Sair</a>
+                </nav>
+            </div>
 
         </div>
 
@@ -31,13 +38,11 @@
 
         @foreach ($notes as $note)
         
-            <a href="javascript:">
-                <div class="notes_item">
-                    <div class="notes_item_content">
-                        {{ $note->content }}
-                    </div>
-                    <div class="notes_item_title">{{ $note->title }}</div>
+            <a href="javascript:" class="notes_item">
+                <div class="notes_item_content">
+                    {{ $note->content }}
                 </div>
+                <div class="notes_item_title">{{ $note->title }}</div>
             </a>
 
         @endforeach

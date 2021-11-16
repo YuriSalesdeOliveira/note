@@ -10,25 +10,30 @@
 .message.highlight-error,
 .message.highlight-success,
 .message.highlight-warning {
+    font-size: .9rem;
     padding: 10px 20px;
-    margin: 5px 10px;
-    border-radius: 5px;
+    margin: 10px 5px;
+    border: 1px solid;
+    border-radius: 3px;
 }
 
 .message.highlight-error {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
+    /* text-shadow: 0 0 0 #721c24; */
 }
 
 .message.highlight-success {
     color: #155724;
     background-color: #d4edda;
     border: 1px solid #c3e6cb;
+    /* text-shadow: 0 0 0 #155724; */
 }
 
 .message.highlight-warning {
     color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;
+    /* text-shadow: 0 0 0 #856404; */
 }

@@ -21,7 +21,14 @@
 
             <a class="add_note_button" href="javascript:">adicionar</a>
 
-            <i class='bx bx-dots-vertical-rounded'></i>
+            <div class="profile">
+                <i class='bx bx-dots-vertical-rounded profile_dropdown_button'></i>
+
+                <nav class="profile_dropdown">
+                    <a href="<?php echo e($router->route('site.profile')); ?>" class="profile_dropdown_item">Perfil</a>
+                    <a href="<?php echo e($router->route('auth.logout')); ?>" class="profile_dropdown_item">Sair</a>
+                </nav>
+            </div>
 
         </div>
 
@@ -31,14 +38,12 @@
 
         <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
-            <a href="javascript:">
-                <div class="notes_item">
-                    <div class="notes_item_content">
-                        <?php echo e($note->content); ?>
+            <a href="javascript:" class="notes_item">
+                <div class="notes_item_content">
+                    <?php echo e($note->content); ?>
 
-                    </div>
-                    <div class="notes_item_title"><?php echo e($note->title); ?></div>
                 </div>
+                <div class="notes_item_title"><?php echo e($note->title); ?></div>
             </a>
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

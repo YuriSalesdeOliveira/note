@@ -6,16 +6,16 @@ use Source\Exceptions\AppException;
 
 class Login extends Model
 {
-    private int $user_id;
+    private int $user;
 
     public function __construct()
     {
-        $this->user_id = $_SESSION['user_id'] ?? 0;
+        $this->user = $_SESSION['user'] ?? 0;
     }
 
     public static function check(): bool
     {
-        return (new self())->user_id ? true : false;
+        return (new self())->user ? true : false;
     }
 
     public static function attempt(array $credentials): bool
@@ -26,7 +26,7 @@ class Login extends Model
 
             if (password_verify($credentials['password'], $user->password)) {
 
-                $_SESSION['user_id'] = $user->id;
+                $_SESSION['user'] = $user->id;
 
                 return true;
             }
@@ -40,7 +40,7 @@ class Login extends Model
     {
         if (self::check()) {
 
-            $user =  User::find(['id' => (new self())->user_id])->first();
+            $user =  User::find(['id' => (new self())->user])->first();
 
             if ($user) return $user;
 
@@ -55,6 +55,8 @@ class Login extends Model
 
     public static function logout()
     {
-        $_SESSION['user_id'] = 0;
+        $_SESSION['user'] = 0;
+
+        return true;
     }
 }

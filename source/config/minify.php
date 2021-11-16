@@ -25,6 +25,8 @@ if (DEVELOPMENT) {
 
     $minJS = new JS();
     $minJS->add(PATH['view'] . '/site/asset/js/modal.js');
-    $minJS->minify(PATH['public'] . '/site/asset/js/main.js');
+    $minJS->add(PATH['view'] . '/site/asset/js/dropdown.js');
+    $minJS->add(PATH['view'] . '/site/asset/js/note.js');
+    $minJS->minify(PATH['public'] . '/site/asset/js/main.min.js');
 
 }
