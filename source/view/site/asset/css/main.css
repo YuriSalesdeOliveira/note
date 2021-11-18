@@ -196,15 +196,18 @@ div.modal_add_note form textarea {
 
 div.modal_add_note form div.modal_add_note_actions {
     width: 100%;
-    height: 10%;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    padding: 0 15px;
+    align-items: flex-end;
+    padding: 15px;
     border-top: 1px solid var(--gray_color_light_03);
 }
 
 div.modal_add_note form button {
     font-size: 1.2rem;
     color: var(--gray_color_light);
+}
+
+div.modal_add_note form button:hover {
+    color: var(--main_color);
 }

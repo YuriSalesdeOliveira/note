@@ -13,7 +13,7 @@
     <header class="main_header">
 
         <div class="main_header_logo">
-            
+            Notes
         </div>
 
         <div class="main_header_actions">
