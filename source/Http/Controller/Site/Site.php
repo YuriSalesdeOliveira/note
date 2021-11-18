@@ -18,8 +18,10 @@ class Site extends Controller
     }
 
     public function home(): void
-    {   
-        $notes = (new Note())->find()->object();
+    {
+        $logged_user_id = Login::user()?->id;
+
+        $notes = Note::find(['user' => $logged_user_id])->object();
 
         echo $this->blade->render('site.home', [
             'notes' => $notes

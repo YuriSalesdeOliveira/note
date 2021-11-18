@@ -8,5 +8,6 @@ class Note extends Model
     protected static array $columns = [
         'title' => 'require',
         'content' => 'require',
+        'user' => 'require',
     ];
 }

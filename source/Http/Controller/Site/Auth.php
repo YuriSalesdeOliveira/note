@@ -63,7 +63,7 @@ class Auth extends Controller
         
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->password = $data['password'];
+        $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
         $user->is_admin = 0;
 
         if ($user->save()) {
@@ -82,8 +82,14 @@ class Auth extends Controller
     public function storeNote($data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
-        
+
         $note = new Note($data);
+
+        $note->title = $data['title'];
+        $note->content = $data['content'];
+        $note->user = Login::user()?->id;
+
+        if ($data['id']) $note->id = $data['id'];
 
         if ($note->save())
             flashAdd(['add_note' => 'Nota salva com sucesso.'], 'success');
