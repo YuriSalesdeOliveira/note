@@ -101,7 +101,7 @@ class Validate
         return true;
     }
 
-    protected function unique($key, $value, $model, $model_namespace = 'Source\Models\\'): bool|string
+    protected function unique($key, $value, $model, $model_namespace = 'Source\Model\\'): bool|string
     {
         $model = $model_namespace . ucfirst($model);
         

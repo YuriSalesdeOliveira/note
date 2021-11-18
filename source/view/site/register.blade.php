@@ -12,8 +12,7 @@
     <div class="register_card">
         <div class="card_header">
 
-            <i class='bx bxs-notepad' ></i>
-            Notes
+            Notes |<span>Cadastrar</span>
 
         </div>
         <div class="card_body" centralize>
@@ -63,7 +62,7 @@
         
             </form>
 
-            <a href="{{ $router->route('web.login') }}" class="button_register">entrar</a>
+            <a href="{{ $router->route('web.login') }}" class="button_register">Fazer login</a>
 
         </div>
         <div class="card_footer">

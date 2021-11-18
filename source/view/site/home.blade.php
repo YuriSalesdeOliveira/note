@@ -13,13 +13,14 @@
     <header class="main_header">
 
         <div class="main_header_logo">
-            <i class='bx bxs-notepad' ></i>
-            Notes
+            
         </div>
 
         <div class="main_header_actions">
 
-            <a class="add_note_button" href="javascript:">adicionar</a>
+            <a class="add_note_button" href="javascript:">
+                <i class='bx bx-add-to-queue' ></i>adicionar
+            </a>
 
             <div class="profile">
                 <i class='bx bx-dots-vertical-rounded profile_dropdown_button'></i>
@@ -39,10 +40,9 @@
         @foreach ($notes as $note)
         
             <a href="javascript:" class="notes_item" data-note_id="{{ $note->id }}">
-                <div class="notes_item_content">
-                    {{ $note->content }}
-                </div>
                 <div class="notes_item_title">{{ $note->title }}</div>
+                <div class="notes_item_content">{{ $note->content }}</div>
+                <div class="notes_item_create_data">{{ strftime('%A, %d de %B de %Y', strtotime($note->created_at)); }}</div>
             </a>
 
         @endforeach

@@ -13,13 +13,14 @@
     <header class="main_header">
 
         <div class="main_header_logo">
-            <i class='bx bxs-notepad' ></i>
-            Notes
+            
         </div>
 
         <div class="main_header_actions">
 
-            <a class="add_note_button" href="javascript:">adicionar</a>
+            <a class="add_note_button" href="javascript:">
+                <i class='bx bx-add-to-queue' ></i>adicionar
+            </a>
 
             <div class="profile">
                 <i class='bx bx-dots-vertical-rounded profile_dropdown_button'></i>
@@ -39,11 +40,9 @@
         <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
             <a href="javascript:" class="notes_item" data-note_id="<?php echo e($note->id); ?>">
-                <div class="notes_item_content">
-                    <?php echo e($note->content); ?>
-
-                </div>
                 <div class="notes_item_title"><?php echo e($note->title); ?></div>
+                <div class="notes_item_content"><?php echo e($note->content); ?></div>
+                <div class="notes_item_create_data"><?php echo e(strftime('%A, %d de %B de %Y', strtotime($note->created_at))); ?></div>
             </a>
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

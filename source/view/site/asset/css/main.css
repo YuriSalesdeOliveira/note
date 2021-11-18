@@ -51,15 +51,19 @@ header.main_header div.main_header_actions {
 }
 
 div.main_header_actions a.add_note_button {
-    padding: 5px 10px;
+    padding: 8px 15px;
     margin-right: 5px;
-    color: var(--light_color);
-    background-color: var(--green_color);
+    border-radius: 4px;
+    color: var(--gray_color_light);
+    background-color: var(--light_color_dark);
 }
 
 div.main_header_actions a.add_note_button:hover {
-    transition: all linear .4s;
-    background-color: var(--green_color_dark);
+    color: var(--gray_color);
+}
+
+a.add_note_button i {
+    margin-right: 5px;
 }
 
 div.main_header_actions div.profile {
@@ -106,9 +110,12 @@ div.notes {
 
 div.notes a.notes_item {
     position: relative;
-    height: 180px;
-    border-radius: 5px;
-    overflow: hidden;
+    height: 230px;
+    display: grid;
+    grid-template-rows: auto 1fr 40px;
+    padding: 6px 10px;
+    color: var(--gray_color_light);
+    border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0, .5);
 }
 
@@ -117,22 +124,20 @@ div.notes a.notes_item:hover {
 }
 
 div.notes_item_content {
-    padding: 5px 10px 0 10px;
-    color: var(--gray_color_light);
-    /* z-index: 10; */
+    overflow: hidden;
+    font-size: .9rem;
 }
 
 div.notes_item_title {
-    position: absolute;
-    width: 100%;
-    height: 35%;
+    padding: 2px 0;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+div.notes_item_create_data {
     display: flex;
-    align-items: center;
-    bottom: 0;
-    padding: 0 5px;
-    color: var(--light_color);
-    background-color: rgba(179, 170, 170, 0.9);
-    /* z-index: 100; */
+    align-items: flex-end;
+    font-size: .8rem;
 }
 
 div.modal_container {

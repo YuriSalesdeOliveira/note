@@ -12,14 +12,13 @@
     <div class="login_card">
         <div class="card_header">
 
-            <i class='bx bxs-notepad' ></i>
-            Notes
+            Notes |<span>Entrar</span>
 
         </div>
         <div class="card_body" centralize>
 
             <form action="<?php echo e($router->route('auth.login')); ?>" method="post">
-    
+                
                 <?php if($error = flashGet('error', 'login')): ?>
                     <div class="message highlight-error">
                         <?php echo e($error); ?>

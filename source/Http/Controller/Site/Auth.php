@@ -35,7 +35,7 @@ class Auth extends Controller
 
         if (Login::attempt($credentials)) $this->router->redirect('site.home');
 
-        flashAdd(['login' => 'E-mail ou senha errado.']);
+        flashAdd(['login' => 'E-mail ou senha informados não conferem.']);
 
         $this->router->redirect('web.login');
     }
@@ -48,10 +48,10 @@ class Auth extends Controller
 
         $validate->validate([
             'name' => ['required'],
-            'email' => ['email', 'required'],
+            'email' => ['email', 'unique:user', 'required'],
             'password' => ['min:8', 'required']
         ]);
-
+        print_r($validate->errors());
         if ($errors = $validate->errors()) {
             
             flashAdd($errors);

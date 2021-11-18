@@ -34,6 +34,11 @@ div.card_header i {
     font-size: 3rem;
 }
 
+div.card_header span {
+    font-size: .9rem;
+    margin-left: 5px;
+}
+
 div.card_header::after {
     content: '';
     position: absolute;
@@ -53,7 +58,13 @@ div.card_body form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     margin-bottom: 10px;
+}
+
+div.card_body form div.form_item {
+    width:45%;
+    margin-bottom: 20px;
 }
 
 div.card_body form input {
@@ -62,15 +73,11 @@ div.card_body form input {
 }
 
 div.card_body form button {
-    width: 100%;
+    width:45%;
     height: 40px;
     font-size: .9rem;
     color: var(--light_color_dark);
     background-color: var(--green_color_dark);
-}
-
-div.card_body form div.form_item {
-    margin-bottom: 20px;
 }
 
 div.card_body a.button_register {
