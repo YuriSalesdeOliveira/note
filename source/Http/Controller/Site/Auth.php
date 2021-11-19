@@ -51,7 +51,7 @@ class Auth extends Controller
             'email' => ['email', 'unique:user', 'required'],
             'password' => ['min:8', 'required']
         ]);
-        print_r($validate->errors());
+
         if ($errors = $validate->errors()) {
             
             flashAdd($errors);
@@ -81,17 +81,47 @@ class Auth extends Controller
 
     public function storeNote($data): void
     {
+        $this->requiredSession();
+
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
-        $note = new Note($data);
+        $validate = new Validate($data);
 
-        $note->title = $data['title'];
-        $note->content = $data['content'];
-        $note->user = Login::user()?->id;
+        $validate->validate([
+            'title' => ['required'],
+            'content' => ['required']
+        ]);
 
-        if ($data['id']) $note->id = $data['id'];
+        if ($errors = $validate->errors()) {
+            // salvar no arquivo de log
+            flashAdd($errors);
 
-        if ($note->save())
+            $this->router->redirect('site.home');
+        }
+
+        if (empty($data['id'])) {
+
+            $note = new Note();
+
+            $note->title = $data['title'];
+            $note->content = $data['content'];
+            $note->user = Login::user()->id;
+
+            $belongs_to = $note->user;
+
+        } else {
+
+            $note = Note::find(['id' => $data['id']])->first();
+            
+            if (!$note) $this->router->redirect('site.home'); // salvar no arquivo de log
+
+            $note->title = $data['title'];
+            $note->content = $data['content'];
+
+            $belongs_to = $note->user;
+        }
+
+        if ($belongs_to === Login::user()->id && $note->save())
             flashAdd(['add_note' => 'Nota salva com sucesso.'], 'success');
         else
             flashAdd(['add_note' => 'Erro ao salvar a nota.']);
@@ -103,5 +133,12 @@ class Auth extends Controller
     {
         if (Login::logout())
             $this->router->redirect('web.login');
+    }
+
+    protected function requiredSession()
+    {
+        if (!Login::check()) {
+            $this->router->redirect('web.login');
+        }
     }
 }

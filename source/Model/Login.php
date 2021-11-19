@@ -46,7 +46,8 @@ class Login extends Model
 
             static::logout();
 
-            throw new AppException('Usuário na sessão não foi encontrado na base de dados');
+            if (DEVELOPMENT)
+                throw new AppException('Usuário na sessão não foi encontrado na base de dados');
 
         }
         

@@ -27,5 +27,10 @@ class Site extends Controller
             'notes' => $notes
         ]);
     }
+
+    public function profile()
+    {
+        echo $this->blade->render('site.profile', []);
+    }
 }
 

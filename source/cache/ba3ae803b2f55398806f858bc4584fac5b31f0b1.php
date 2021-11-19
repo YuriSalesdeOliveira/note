@@ -35,6 +35,9 @@
 
     </header>
 
+    <?php echo e(flashGet('error', 'add_note')); ?>
+
+
     <div class="notes">
 
         <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
