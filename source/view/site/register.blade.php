@@ -62,7 +62,7 @@
         
             </form>
 
-            <a href="{{ $router->route('web.login') }}" class="button_register">Fazer login</a>
+            <a href="{{ $router->route('web.login') }}" class="button_register">fazer login</a>
 
         </div>
         <div class="card_footer">
