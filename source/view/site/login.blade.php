@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ assets('site/asset/css/style.min.css') }}">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <title>Aplicativo de notas - login</title>
+    <title>Aplicativo de notas - entrar</title>
 </head>
 <body centralize>
     <div class="login_card">

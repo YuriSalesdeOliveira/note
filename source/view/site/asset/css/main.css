@@ -50,7 +50,9 @@ header.main_header div.main_header_actions {
     align-items: center;
 }
 
-div.main_header_actions a.add_note_button {
+div.main_header_actions a.main_header_actions_button {
+    display: flex;
+    align-items: center;
     padding: 8px 15px;
     margin-right: 5px;
     border-radius: 4px;
@@ -58,11 +60,11 @@ div.main_header_actions a.add_note_button {
     background-color: var(--light_color_dark);
 }
 
-div.main_header_actions a.add_note_button:hover {
+div.main_header_actions a.main_header_actions_button:hover {
     color: var(--gray_color);
 }
 
-a.add_note_button i {
+a.main_header_actions_button i {
     margin-right: 5px;
 }
 
@@ -100,15 +102,102 @@ div.profile nav.profile_dropdown.show {
     display: flex;
 }
 
-div.notes {
+div.title {
+    user-select: none;
+    width: var(--base_width);
+    display: flex;
+    margin-bottom: 50px;
+}
+
+div.title span {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    color: var(--gray_color);
+    box-shadow: 0 0 2px rgba(0,0,0, .2);
+}
+
+div.title span i {
+    color: var(--gray_color_light_01);
+    margin-left: 2px;
+}
+
+main.profile {
+    width: var(--base_width);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+main.profile nav.forms_nav {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 0 2px rgba(0,0,0, .2);
+
+}
+
+nav.forms_nav a.forms_nav_item {
+    padding: 8px 5px;
+    font-size: .9rem;
+    color: var(--gray_color);
+}
+
+nav.forms_nav a.forms_nav_item:hover {
+    text-decoration: underline;
+}
+
+main.profile div.forms_container {
+    width: calc(100% - 210px);
+}
+
+main.profile div.forms_container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: .9rem;
+}
+
+main.profile div.forms_container  form div.form_item,
+main.profile div.forms_container  form div.form_item_button,
+main.profile div.forms_container  form button {
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+main.profile div.forms_container  form input {
+    width: 100%;
+    height: 25px;
+}
+
+main.profile div.forms_container  form div.form_item_button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+main.profile div.forms_container  form button {
+    width: 100px;
+    height: 30px;
+    color: var(--light_color_dark);
+    background-color: var(--green_color_dark);
+}
+
+main.profile div.forms_container  form button:hover {
+    color: var(--gray_color);
+}
+
+
+
+main.notes {
     width: var(--base_width);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    padding: 0 10px;
 }
 
-div.notes a.notes_item {
+main.notes a.notes_item {
     position: relative;
     height: 230px;
     display: grid;
@@ -119,7 +208,7 @@ div.notes a.notes_item {
     box-shadow: 0 1px 3px rgba(0,0,0, .5);
 }
 
-div.notes a.notes_item:hover {
+main.notes a.notes_item:hover {
     background-color: var(--light_color_dark);
 }
 

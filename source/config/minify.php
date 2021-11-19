@@ -25,8 +25,27 @@ if (DEVELOPMENT) {
 
     $minJS = new JS();
     $minJS->add(PATH['view'] . '/site/asset/js/modal.js');
+    $minJS->minify(PATH['public'] . '/site/asset/js/modal.min.js');
+
+    $minJS = new JS();
     $minJS->add(PATH['view'] . '/site/asset/js/dropdown.js');
+    $minJS->minify(PATH['public'] . '/site/asset/js/dropdown.min.js');
+
+
+    $minJS = new JS();
     $minJS->add(PATH['view'] . '/site/asset/js/note.js');
-    $minJS->minify(PATH['public'] . '/site/asset/js/main.min.js');
+    $minJS->minify(PATH['public'] . '/site/asset/js/note.min.js');
+
+
+    $minJS = new JS();
+    $minJS->add(PATH['view'] . '/site/asset/js/toggleForms.js');
+    $minJS->minify(PATH['public'] . '/site/asset/js/toggleForms.min.js');
+
+    
+
+
+    
+
+
 
 }

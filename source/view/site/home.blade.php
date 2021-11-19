@@ -18,7 +18,7 @@
 
         <div class="main_header_actions">
 
-            <a class="add_note_button" href="javascript:">
+            <a class="main_header_actions_button add_note_button" href="javascript:">
                 <i class='bx bx-add-to-queue' ></i>adicionar
             </a>
 
@@ -35,7 +35,13 @@
 
     </header>
 
-    <div class="notes">
+    <div class="title">
+        <span>Recentes
+            <i class='bx bx-play'></i>
+        </span>
+    </div>
+
+    <main class="notes">
 
         @foreach ($notes as $note)
         
@@ -47,7 +53,7 @@
 
         @endforeach
 
-    </div>
+    </main>
 
     <div class="modal_container">
 
@@ -77,7 +83,9 @@
         
     </div>
     
-    <script src="{{ assets('site/asset/js/main.min.js') }}"></script>
+    <script src="{{ assets('site/asset/js/modal.min.js') }}"></script>
+    <script src="{{ assets('site/asset/js/dropdown.min.js') }}"></script>
+    <script src="{{ assets('site/asset/js/note.min.js') }}"></script>
 
 </body>
 </html>

@@ -26,6 +26,7 @@ $router->get('/cadastrar', 'Web:register', 'web.register');
 
 $router->group(null);
 $router->get('/', 'Site:home', 'site.home');
+$router->get('/perfil', 'Site:profile', 'site.profile');
 
 /**
  * AUTH

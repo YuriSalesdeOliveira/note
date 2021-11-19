@@ -30,7 +30,11 @@ class Site extends Controller
 
     public function profile()
     {
-        echo $this->blade->render('site.profile', []);
+        $user = Login::user();
+
+        echo $this->blade->render('site.profile', [
+            'user' => $user
+        ]);
     }
 }
 

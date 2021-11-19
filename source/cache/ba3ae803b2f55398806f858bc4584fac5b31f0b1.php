@@ -18,7 +18,7 @@
 
         <div class="main_header_actions">
 
-            <a class="add_note_button" href="javascript:">
+            <a class="main_header_actions_button add_note_button" href="javascript:">
                 <i class='bx bx-add-to-queue' ></i>adicionar
             </a>
 
@@ -35,10 +35,13 @@
 
     </header>
 
-    <?php echo e(flashGet('error', 'add_note')); ?>
+    <div class="title">
+        <span>Recentes
+            <i class='bx bx-play'></i>
+        </span>
+    </div>
 
-
-    <div class="notes">
+    <main class="notes">
 
         <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
@@ -50,7 +53,7 @@
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-    </div>
+    </main>
 
     <div class="modal_container">
 
@@ -80,7 +83,9 @@
         
     </div>
     
-    <script src="<?php echo e(assets('site/asset/js/main.min.js')); ?>"></script>
+    <script src="<?php echo e(assets('site/asset/js/modal.min.js')); ?>"></script>
+    <script src="<?php echo e(assets('site/asset/js/dropdown.min.js')); ?>"></script>
+    <script src="<?php echo e(assets('site/asset/js/note.min.js')); ?>"></script>
 
 </body>
 </html><?php /**PATH /var/www/html/note/source/view/site/home.blade.php ENDPATH**/ ?>

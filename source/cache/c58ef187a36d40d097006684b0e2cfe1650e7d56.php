@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ assets('site/asset/css/style.min.css') }}">
+    <link rel="stylesheet" href="<?php echo e(assets('site/asset/css/style.min.css')); ?>">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Aplicativo de notas - perfil</title>
 </head>
@@ -17,7 +17,7 @@
 
         <div class="main_header_actions">
 
-            <a class="main_header_actions_button" href="{{ $router->route('site.home') }}">
+            <a class="main_header_actions_button" href="<?php echo e($router->route('site.home')); ?>">
                 <i class='bx bx-left-arrow-alt'></i>voltar
             </a>
 
@@ -25,8 +25,8 @@
                 <i class='bx bx-dots-vertical-rounded profile_dropdown_button'></i>
 
                 <nav class="profile_dropdown">
-                    <a href="{{ $router->route('site.profile') }}" class="profile_dropdown_item">Perfil</a>
-                    <a href="{{ $router->route('auth.logout') }}" class="profile_dropdown_item">Sair</a>
+                    <a href="<?php echo e($router->route('site.profile')); ?>" class="profile_dropdown_item">Perfil</a>
+                    <a href="<?php echo e($router->route('auth.logout')); ?>" class="profile_dropdown_item">Sair</a>
                 </nav>
             </div>
 
@@ -100,8 +100,8 @@
 
     </main>
 
-    <script src="{{ assets('site/asset/js/toggleForms.min.js') }}"></script>
-    <script src="{{ assets('site/asset/js/dropdown.min.js') }}"></script>
+    <script src="<?php echo e(assets('site/asset/js/toggleForms.min.js')); ?>"></script>
+    <script src="<?php echo e(assets('site/asset/js/dropdown.min.js')); ?>"></script>
 
 </body>
-</html>
+</html><?php /**PATH /var/www/html/note/source/view/site/profile.blade.php ENDPATH**/ ?>
