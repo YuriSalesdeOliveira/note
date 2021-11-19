@@ -38,7 +38,12 @@ $router->post('/cadastrar', 'Auth:register', 'auth.register');
 $router->get('/sair', 'Auth:logout', 'auth.logout'); // deixei o logout como get, mas ver o post
 
 $router->group('/nota');
-$router->post('/', 'Auth:storeNote', 'auth.storeNote');
+$router->post('/', 'Auth:registerNote', 'auth.registerNote');
+
+$router->group('/perfil');
+$router->post('/editar/nome', 'Auth:updateName', 'auth.updateName');
+$router->post('/editar/email', 'Auth:updateEmail', 'auth.updateEmail');
+$router->post('/editar/senha', 'Auth:updatePassword', 'auth.updatePassword');
 
 /**
  * ERROR

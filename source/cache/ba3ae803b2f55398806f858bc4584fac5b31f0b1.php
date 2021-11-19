@@ -61,7 +61,7 @@
 
             <div class="modal_add_note">
 
-                <form action="<?php echo e($router->route('auth.storeNote')); ?>" method="post">
+                <form action="<?php echo e($router->route('auth.registerNote')); ?>" method="post">
     
                     <input type="text" name="title" placeholder="Titulo">
         

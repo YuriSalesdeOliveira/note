@@ -40,19 +40,32 @@
         </span>
     </div>
 
+    <?php if($error = flashGet('error', 'update_profile')): ?>
+        <div class="message highlight-error">
+            <?php echo e($error); ?>
+
+        </div>
+    <?php endif; ?>
+    <?php if($message = flashGet('success', 'update_profile')): ?>
+        <div class="message highlight-success">
+            <?php echo e($message); ?>
+
+        </div>
+    <?php endif; ?>
+
     <main class="profile">
 
         <nav class="forms_nav">
 
-            <a href="javascript:" data-form_id="alter_name" class="forms_nav_item">Alterar nome</a>
-            <a href="javascript:" data-form_id="alter_email" class="forms_nav_item">Alterar e-mail</a>
-            <a href="javascript:" data-form_id="alter_password" class="forms_nav_item">Alterar senha</a>
+            <a href="javascript:" data-form_id="update_name" class="forms_nav_item">Alterar nome</a>
+            <a href="javascript:" data-form_id="update_email" class="forms_nav_item">Alterar e-mail</a>
+            <a href="javascript:" data-form_id="update_password" class="forms_nav_item">Alterar senha</a>
 
         </nav>
 
         <div class="forms_container">
 
-            <form action="#" id="alter_name" method="post">
+            <form action="<?php echo e($router->route('auth.updateName')); ?>" id="update_name" method="post">
                 
                 <div class="form_item">
                     <label for="name">Nome</label>
@@ -65,7 +78,7 @@
 
             </form>
 
-            <form action="#" id="alter_email" method="post">
+            <form action="<?php echo e($router->route('auth.updateEmail')); ?>" id="update_email" method="post">
                 
                 <div class="form_item">
                     <label for="email">E-mail</label>
@@ -78,7 +91,7 @@
 
             </form>
 
-            <form action="#" id="alter_password" method="post">
+            <form action="<?php echo e($router->route('auth.updatePassword')); ?>" id="update_password" method="post">
 
                <div class="form_item">
                     <label for="old_password">Senha atual</label>

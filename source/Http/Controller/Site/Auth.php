@@ -78,8 +78,8 @@ class Auth extends Controller
         $this->router->redirect('web.register');
 
     }
-
-    public function storeNote($data): void
+    // tenho que criar um metodo separado para fazer o update das notas
+    public function registerNote($data): void
     {
         $this->requiredSession();
 
@@ -127,6 +127,78 @@ class Auth extends Controller
             flashAdd(['add_note' => 'Erro ao salvar a nota.']);
 
         $this->router->redirect('site.home');
+    }
+
+    public function updateName($data)
+    {
+        $this->requiredSession();
+
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if (!empty($data['name'])) {
+
+            $user = Login::user();
+
+            $user->name = $data['name'];
+
+            if ($user->save())
+                flashAdd(['update_profile' => 'Nome atualizado.'], 'success');
+            else
+                flashAdd(['update_profile' => 'Erro ao atualizar o nome.']);
+        }
+
+        $this->router->redirect('site.profile');
+    }
+
+    public function updateEmail($data)
+    {
+        $this->requiredSession();
+
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if (!empty($data['email'])) {
+
+            $user = Login::user();
+
+            $user->email = $data['email'];
+
+            if ($user->save())
+                flashAdd(['update_profile' => 'E-mail atualizado.'], 'success');
+            else
+                flashAdd(['update_profile' => 'Erro ao atualizar o e-mail.']);
+        }
+
+        $this->router->redirect('site.profile');
+    }
+
+    public function updatePassword($data)
+    {
+        $this->requiredSession();
+
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if (!empty($data['old_password']) && !empty($data['new_password'])) {
+
+            $user = Login::user();
+
+            if (!password_verify($data['old_password'], $user->password)) {
+
+                flashAdd(['update_profile' => 'Erro ao atualizar a senha.']);
+
+                $this->router->redirect('site.profile');
+
+            }
+
+            $user->password = password_hash($data['new_password'], PASSWORD_DEFAULT);
+
+            if ($user->save())
+                flashAdd(['update_profile' => 'Senha atualizada.'], 'success');
+            else
+                flashAdd(['update_profile' => 'Erro ao atualizar a senha.']);
+
+        }
+
+        $this->router->redirect('site.profile');
     }
 
     public function logout(): void
