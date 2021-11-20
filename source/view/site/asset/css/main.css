@@ -140,7 +140,6 @@ main.profile nav.forms_nav {
 
 nav.forms_nav a.forms_nav_item {
     padding: 8px 5px;
-    font-size: .9rem;
     color: var(--gray_color);
 }
 

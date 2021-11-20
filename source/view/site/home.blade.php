@@ -61,7 +61,7 @@
 
             <div class="modal_add_note">
 
-                <form action="{{ $router->route('auth.registerNote') }}" method="post">
+                <form action="{{ $router->route('auth.createOrUpdateNote') }}" method="post">
     
                     <input type="text" name="title" placeholder="Titulo">
         

@@ -35,10 +35,10 @@ $router->get('/perfil', 'Site:profile', 'site.profile');
 $router->group(null);
 $router->post('/entrar', 'Auth:login', 'auth.login');
 $router->post('/cadastrar', 'Auth:register', 'auth.register');
-$router->get('/sair', 'Auth:logout', 'auth.logout'); // deixei o logout como get, mas ver o post
+$router->get('/sair', 'Auth:logout', 'auth.logout');
 
 $router->group('/nota');
-$router->post('/', 'Auth:registerNote', 'auth.registerNote');
+$router->post('/', 'Auth:createOrUpdateNote', 'auth.createOrUpdateNote');
 
 $router->group('/perfil');
 $router->post('/editar/nome', 'Auth:updateName', 'auth.updateName');

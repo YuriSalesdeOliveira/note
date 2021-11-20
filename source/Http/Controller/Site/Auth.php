@@ -78,8 +78,8 @@ class Auth extends Controller
         $this->router->redirect('web.register');
 
     }
-    // tenho que criar um metodo separado para fazer o update das notas
-    public function registerNote($data): void
+    
+    public function createOrUpdateNote($data): void
     {
         $this->requiredSession();
 
