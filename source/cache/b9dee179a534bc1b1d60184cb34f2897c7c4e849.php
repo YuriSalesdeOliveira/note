@@ -67,7 +67,7 @@
         
             </form>
 
-            <a href="<?php echo e($router->route('web.login')); ?>" class="button_register">fazer login</a>
+            <a href="<?php echo e($router->route('web.login')); ?>" class="button_link">fazer login</a>
 
         </div>
         <div class="card_footer">

@@ -47,8 +47,10 @@
         
             </form>
 
-            <a href="#" class="button_register">esqueci a senha</a>
-            <a href="{{ $router->route('web.register') }}" class="button_register">registre-se</a>
+            <div class="button_link_container">
+                <a href="#" class="button_link">esqueci a senha</a> |
+                <a href="{{ $router->route('web.register') }}" class="button_link">registre-se</a>
+            </div>
 
         </div>
         <div class="card_footer">

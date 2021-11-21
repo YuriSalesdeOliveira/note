@@ -15,7 +15,7 @@ if (DEVELOPMENT) {
     $minCSS->add(PATH['view'] . '/site/asset/css/colors.css');
     $minCSS->add(PATH['view'] . '/site/asset/css/message.css');
     $minCSS->add(PATH['view'] . '/site/asset/css/main.css');
-    $minCSS->add(PATH['view'] . '/site/asset/css/login.css');
+    $minCSS->add(PATH['view'] . '/site/asset/css/card_form.css');
     $minCSS->minify(PATH['public'] . '/site/asset/css/style.min.css');
 
     /**
