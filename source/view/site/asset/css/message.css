@@ -11,7 +11,7 @@
 .message.highlight-success,
 .message.highlight-warning {
     font-size: .9rem;
-    padding: 10px 20px;
+    padding: 5px 20px;
     margin: 10px 5px;
     border: 1px solid;
     border-radius: 3px;

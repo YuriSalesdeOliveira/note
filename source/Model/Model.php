@@ -26,6 +26,30 @@ abstract class Model
         $this->connection = (new MysqlConnection())->connection();
     }
 
+    public function remove(): bool
+    {
+        if (isset($this->id))
+            return $this->delete(['id' => $this->id]);
+        
+        return false;
+    }
+
+    public static function removeById(string $id): bool
+    {
+        return (new static)->delete(['id' => $id]);
+    }
+
+    protected function delete(array $filters): bool
+    {
+        $sql = "DELETE FROM " . static::$entity . $this->where($filters);
+        
+        $stmt = $this->connection->prepare($sql);
+
+        if ($stmt->execute($filters)) return true;
+
+        return false;
+    }
+
     public function save(): bool
     {
         if (isset($this->{static::$primary})) return $this->update();
@@ -173,8 +197,3 @@ abstract class Model
         return substr($sql, 0, -1);
     }
 }
-
-// ver a possibilidade de transferir a responsabilidade de efetivamente
-// fazer as consultas etc.. para a classe database
-// tenho em mente que não preciso guardar o statement visto que o proprio
-// objeto model manteria o objeto pdo que teria o statement

@@ -45,11 +45,12 @@
 
         <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
-            <a href="javascript:" class="notes_item" data-note_id="<?php echo e($note->id); ?>">
+            <div class="notes_item" data-note_id="<?php echo e($note->id); ?>">
                 <div class="notes_item_title"><?php echo e($note->title); ?></div>
                 <div class="notes_item_content"><?php echo e($note->content); ?></div>
                 <div class="notes_item_create_data"><?php echo e(strftime('%A, %d de %B de %Y', strtotime($note->created_at))); ?></div>
-            </a>
+                <a href="<?php echo e($router->route('auth.deleteNote', ['note_id' => $note->id])); ?>" class="notes_item_delete">x</a>
+            </div>
 
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

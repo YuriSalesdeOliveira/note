@@ -105,7 +105,9 @@ div.profile nav.profile_dropdown.show {
 div.title {
     user-select: none;
     width: var(--base_width);
+    height: 50px;
     display: flex;
+    align-items: center;
     margin-bottom: 50px;
 }
 
@@ -113,6 +115,7 @@ div.title span {
     display: flex;
     align-items: center;
     padding: 5px 20px;
+    margin-right: 10px;
     color: var(--gray_color);
     box-shadow: 0 0 2px rgba(0,0,0, .2);
 }
@@ -187,8 +190,6 @@ main.profile div.forms_container  form button:hover {
     color: var(--gray_color);
 }
 
-
-
 main.notes {
     width: var(--base_width);
     display: grid;
@@ -196,7 +197,8 @@ main.notes {
     gap: 10px;
 }
 
-main.notes a.notes_item {
+main.notes div.notes_item {
+    cursor: pointer;
     position: relative;
     height: 230px;
     display: grid;
@@ -207,8 +209,22 @@ main.notes a.notes_item {
     box-shadow: 0 1px 3px rgba(0,0,0, .5);
 }
 
-main.notes a.notes_item:hover {
+main.notes div.notes_item:hover {
     background-color: var(--light_color_dark);
+}
+
+a.notes_item_delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 5px ;
+    margin: 0 5px;
+    color: var(--gray_color_light);
+    background-color: var(--light_color_dark_01);
+}
+
+a.notes_item_delete:hover {
+    color: red;
 }
 
 div.notes_item_content {

@@ -45,11 +45,12 @@
 
         @foreach ($notes as $note)
         
-            <a href="javascript:" class="notes_item" data-note_id="{{ $note->id }}">
+            <div class="notes_item" data-note_id="{{ $note->id }}">
                 <div class="notes_item_title">{{ $note->title }}</div>
                 <div class="notes_item_content">{{ $note->content }}</div>
                 <div class="notes_item_create_data">{{ strftime('%A, %d de %B de %Y', strtotime($note->created_at)); }}</div>
-            </a>
+                <a href="{{ $router->route('auth.deleteNote', ['note_id' => $note->id]) }}" class="notes_item_delete">x</a>
+            </div>
 
         @endforeach
 

@@ -47,6 +47,7 @@
         
             </form>
 
+            <a href="#" class="button_register">esqueci a senha</a>
             <a href="{{ $router->route('web.register') }}" class="button_register">registre-se</a>
 
         </div>

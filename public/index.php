@@ -39,6 +39,7 @@ $router->get('/sair', 'Auth:logout', 'auth.logout');
 
 $router->group('/nota');
 $router->post('/', 'Auth:createOrUpdateNote', 'auth.createOrUpdateNote');
+$router->get('/deletar/{note_id}', 'Auth:deleteNote', 'auth.deleteNote');
 
 $router->group('/perfil');
 $router->post('/editar/nome', 'Auth:updateName', 'auth.updateName');

@@ -38,9 +38,7 @@
         <span>Perfil
             <i class='bx bx-play'></i>
         </span>
-    </div>
-
-    <?php if($error = flashGet('error', 'update_profile')): ?>
+        <?php if($error = flashGet('error', 'update_profile')): ?>
         <div class="message highlight-error">
             <?php echo e($error); ?>
 
@@ -52,6 +50,9 @@
 
         </div>
     <?php endif; ?>
+    </div>
+
+    
 
     <main class="profile">
 

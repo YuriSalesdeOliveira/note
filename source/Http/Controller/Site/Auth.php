@@ -2,6 +2,7 @@
 
 namespace Source\Http\Controller\Site;
 
+use Illuminate\Support\Facades\Log;
 use Source\Model\Note;
 use Source\Model\Login;
 use Source\Support\Validate;
@@ -127,6 +128,23 @@ class Auth extends Controller
             flashAdd(['add_note' => 'Erro ao salvar a nota.']);
 
         $this->router->redirect('site.home');
+    }
+
+    public function deleteNote($data)
+    {
+        $this->requiredSession();
+
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        if (!empty($data['note_id']) && $note = Note::find(['id' => $data['note_id']])->first()) {
+
+            if ($note->user === Login::user()->id)
+                $note->remove();
+
+        }
+
+        $this->router->redirect('site.home');
+
     }
 
     public function updateName($data)

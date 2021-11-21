@@ -38,9 +38,7 @@
         <span>Perfil
             <i class='bx bx-play'></i>
         </span>
-    </div>
-
-    @if ($error = flashGet('error', 'update_profile'))
+        @if ($error = flashGet('error', 'update_profile'))
         <div class="message highlight-error">
             {{ $error }}
         </div>
@@ -50,6 +48,9 @@
             {{ $message }}
         </div>
     @endif
+    </div>
+
+    
 
     <main class="profile">
 

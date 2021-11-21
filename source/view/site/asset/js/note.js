@@ -85,7 +85,14 @@
 
     notes.forEach((note) => {
 
-        note.addEventListener('click', () => showModalForEdit(note));
+        note.addEventListener('click', (element) => {
+
+            if (!element.target.classList.contains('notes_item_delete')) {
+
+                showModalForEdit(note)
+            }
+
+        });
 
     });
 
