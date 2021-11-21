@@ -38,3 +38,12 @@ define("DB_CONNECTION_CONFIG", [
         PDO::ATTR_CASE => PDO::CASE_NATURAL
     ]
 ]);
+
+define('MAIL', [
+    'host' => 'smtp.mailtrap.io',
+    'username' => '78cb807423bb71',
+    'password' => '2f9c95d8fd7349',
+    'port' => '2525',
+    'from_name' => 'Yuri Oliveira',
+    'from_email' => 'yuri_oli@hotmail.com',
+]);
