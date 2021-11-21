@@ -1,7 +1,7 @@
 div.register_card {
     width: 30%;
     min-width: 500px;
-    height: 450px;
+    height: 470px;
     display: grid;
     grid-template-rows: 80px 1fr 50px;
     overflow: hidden;
