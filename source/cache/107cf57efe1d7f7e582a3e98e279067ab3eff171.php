@@ -50,7 +50,7 @@
         
             </form>
 
-            <a href="<?php echo e($router->route('web.register')); ?>" class="button_register">esqueci a senha</a>
+            <a href="#" class="button_register">esqueci a senha</a>
             <a href="<?php echo e($router->route('web.register')); ?>" class="button_register">registre-se</a>
 
         </div>
