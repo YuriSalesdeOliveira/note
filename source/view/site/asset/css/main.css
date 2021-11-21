@@ -224,7 +224,7 @@ a.notes_item_delete {
 }
 
 a.notes_item_delete:hover {
-    color: red;
+    color: darkred;
 }
 
 div.notes_item_content {
