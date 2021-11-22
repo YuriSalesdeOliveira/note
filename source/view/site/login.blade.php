@@ -23,7 +23,12 @@
                     <div class="message highlight-error">
                         {{ $error }}
                     </div>
-                @endif  
+                @endif
+                @if ($success = flashGet('success', 'login'))
+                    <div class="message highlight-success">
+                        {{ $success }}
+                    </div>
+                @endif
 
                 <div class="form_item">
                     <label for="email">E-mail</label>
@@ -48,7 +53,7 @@
             </form>
 
             <div class="button_link_container">
-                <a href="#" class="button_link">esqueci a senha</a> |
+                <a href="{{ $router->route('web.forget') }}" class="button_link">esqueci a senha</a> |
                 <a href="{{ $router->route('web.register') }}" class="button_link">registre-se</a>
             </div>
 

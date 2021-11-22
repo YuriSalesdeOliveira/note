@@ -18,6 +18,8 @@ $router->namespace('Source\Http\Controller\Site');
 $router->group(null);
 $router->get('/entrar', 'Web:login', 'web.login');
 $router->get('/cadastrar', 'Web:register', 'web.register');
+$router->get('/recuperar', 'Web:forget', 'web.forget');
+$router->get('/recuperar/senha/{email}/{forget}', 'Web:recoverPassword', 'web.recoverPassword');
 
 
 /**
@@ -36,6 +38,9 @@ $router->group(null);
 $router->post('/entrar', 'Auth:login', 'auth.login');
 $router->post('/cadastrar', 'Auth:register', 'auth.register');
 $router->get('/sair', 'Auth:logout', 'auth.logout');
+
+$router->post('/recuperar', 'Auth:forget', 'auth.forget');
+$router->post('/recuperar/senha', 'Auth:recoverPassword', 'auth.recoverPassword');
 
 $router->group('/nota');
 $router->post('/', 'Auth:createOrUpdateNote', 'auth.createOrUpdateNote');

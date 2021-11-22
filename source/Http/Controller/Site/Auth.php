@@ -2,16 +2,17 @@
 
 namespace Source\Http\Controller\Site;
 
-use Illuminate\Support\Facades\Log;
 use Source\Model\Note;
-use Source\Model\Login;
-use Source\Support\Validate;
-use Source\Http\Controller\Controller;
 use Source\Model\User;
+use Source\Model\Login;
+use Source\Support\Email;
+use Source\Support\Validate;
+use Illuminate\Support\Facades\Log;
+use Source\Http\Controller\Controller;
 
 class Auth extends Controller
 {
-    public function login($data)
+    public function login($data): void
     {
         $data =  filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
@@ -130,7 +131,7 @@ class Auth extends Controller
         $this->router->redirect('site.home');
     }
 
-    public function deleteNote($data)
+    public function deleteNote($data): void
     {
         $this->requiredSession();
 
@@ -147,7 +148,7 @@ class Auth extends Controller
 
     }
 
-    public function updateName($data)
+    public function updateName($data): void
     {
         $this->requiredSession();
 
@@ -168,7 +169,7 @@ class Auth extends Controller
         $this->router->redirect('site.profile');
     }
 
-    public function updateEmail($data)
+    public function updateEmail($data): void
     {
         $this->requiredSession();
 
@@ -189,7 +190,7 @@ class Auth extends Controller
         $this->router->redirect('site.profile');
     }
 
-    public function updatePassword($data)
+    public function updatePassword($data): void
     {
         $this->requiredSession();
 
@@ -219,13 +220,105 @@ class Auth extends Controller
         $this->router->redirect('site.profile');
     }
 
+    public function forget($data)
+    {
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        $validate = new Validate($data);
+
+        $validate->validate([
+            'email' => ['required', 'email', 'exists:user']
+        ]);
+
+        if ($errors = $validate->errors()) {
+            
+            flashAdd($errors);
+
+            $this->router->redirect('web.forget');
+        }
+
+        $user = User::find(['email' => $data['email']])->first();
+
+        $user->forget = md5(uniqid(rand(), true));
+        $user->save();
+
+        $_SESSION['forget'] = $user->id;
+
+        $email = new Email();
+
+        $email->add(
+            'Recupere sua senha |' . SITE['name'],
+            $this->blade->render('site.email.recover' , [
+                'user' => $user
+            ]),
+            $user->name,
+            $user->email
+        )->send();
+
+        // if ($email->error())
+        // guardar no arquivo de log
+
+        flashAdd(['forget' => 'Enviamos um link de recuperação para o seu e-mail.'], 'success');
+
+        $this->router->redirect('web.forget');
+    }
+
+    public function recoverPassword($data): void
+    {
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        $error_forget = 'Não foi possivel recuperar. Tente novamente.';
+
+        if (empty($_SESSION['forget']) || empty($_SESSION['forget_compare'])) {
+
+            flashAdd(['forget' => $error_forget]);
+
+            $this->router->redirect('web.forget');
+        }
+
+        if ($_SESSION['forget'] != $_SESSION['forget_compare']
+            || !$user = User::find(['id' => $_SESSION['forget']])->first()) {
+
+            flashAdd(['forget' => $error_forget]);
+
+            $this->router->redirect('web.froget');
+        }
+
+        $validate = new Validate($data);
+
+        $validate->validate([
+            'password' => ['required', 'min:8']
+        ]);
+
+        if ($errors = $validate->errors()) {
+
+            flashAdd($errors);
+
+            $this->router->redirect('web.recoverPassword',
+                ['email' => $user->email, 'forget' => $user->forget]);
+        }
+
+        $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+        $user->forget = null;
+
+        if ($user->save())
+            flashAdd(['login' => 'Sua senha foi atualizada.'], 'success');
+        else
+            flashAdd(['login' => $error_forget]);
+
+        unset($_SESSION['forget']);
+        unset($_SESSION['forget_compare']);
+
+        $this->router->redirect('web.login');
+    }
+
     public function logout(): void
     {
         if (Login::logout())
             $this->router->redirect('web.login');
     }
 
-    protected function requiredSession()
+    protected function requiredSession(): void
     {
         if (!Login::check()) {
             $this->router->redirect('web.login');

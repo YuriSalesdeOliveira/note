@@ -14,6 +14,7 @@ if (!DEVELOPMENT) {
 }
 
 define('SITE', [
+    'name' => 'Notes',
     'root' => 'http://localhost/note/public',
 ]);
 

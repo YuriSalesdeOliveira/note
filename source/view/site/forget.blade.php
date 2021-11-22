@@ -6,39 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ assets('site/asset/css/style.min.css') }}">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <title>Aplicativo de notas - registrar</title>
+    <title>Aplicativo de notas - recuperar</title>
 </head>
 <body centralize>
-    <div class="register_card">
+    <div class="forget_card">
         <div class="card_header">
 
-            Notes |<span>Cadastrar</span>
+            Notes |<span>Recuperar</span>
 
         </div>
         <div class="card_body" centralize>
 
-            <form action="{{ $router->route('auth.register') }}" method="post">
-    
-                @if ($error = flashGet('error', 'register'))
+            <form action="{{ $router->route('auth.forget') }}" method="post">
+                
+                @if ($error = flashGet('error', 'forget'))
                     <div class="message highlight-error">
                         {{ $error }}
                     </div>
                 @endif
-                @if ($success = flashGet('success', 'register'))
+                @if ($success = flashGet('success', 'forget'))
                     <div class="message highlight-success">
                         {{ $success }}
                     </div>
                 @endif
-
-
-                <div class="form_item">
-                    <label for="name">Nome</label>
-                    <input type="text" name="name">
-
-                    <div class="message lowlight-error">
-                        {{ flashGet('error', 'name') }}
-                    </div>
-                </div>
 
                 <div class="form_item">
                     <label for="email">E-mail</label>
@@ -49,20 +39,14 @@
                     </div>
                 </div>
         
-                <div class="form_item">
-                    <label for="password">Senha</label>
-                    <input type="password" name="password">
-
-                    <div class="message lowlight-error">
-                        {{ flashGet('error', 'password') }}
-                    </div>
-                </div>
-        
-                <button type="submit">Cadastrar</button>
+                <button type="submit">enviar</button>
         
             </form>
 
-            <a href="{{ $router->route('web.login') }}" class="button_link">fazer login</a>
+            <div class="button_link_container">
+                <a href="{{ $router->route('web.login') }}" class="button_link">fazer login</a> |
+                <a href="{{ $router->route('web.register') }}" class="button_link">registre-se</a>
+            </div>
 
         </div>
         <div class="card_footer">

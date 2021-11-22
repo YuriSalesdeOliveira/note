@@ -181,7 +181,7 @@ abstract class Model
         $sql = ' WHERE 1 = 1 ';
 
         foreach (array_keys($filters) as $key)
-            $sql .= "AND {$key} = :{$key}";
+            $sql .= " AND {$key} = :{$key}";
 
         return $sql;
     }

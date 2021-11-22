@@ -6,6 +6,7 @@ return [
     'required' => 'O campo :attribute é obrigatório.',
     'email' => 'O campo :attribute deve conter um email válido.',
     'unique' => 'O :attribute já foi usado.',
+    'exists' => 'O :attribute não está cadastrado.',
 
     'max' => [
         'string' => 'O campo :attribute deve conter no máximo :max caracteres.'

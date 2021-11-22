@@ -116,6 +116,21 @@ class Validate
         return true;
     }
 
+    protected function exists($key, $value, $model, $model_namespace = 'Source\Model\\'): bool|string
+    {
+        $model = $model_namespace . ucfirst($model);
+        
+        if (class_exists($model)) {
+            
+            $result = $model::find([$key => $value])->first();
+
+            if (!$result) return $this->message->get('exists', attribute: $key);
+            
+        }
+
+        return true;
+    }
+
     public function errors(string $key = ''): string|array
     {
         return $key ? $this->errors[$key] : $this->errors;
