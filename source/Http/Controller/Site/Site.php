@@ -2,10 +2,10 @@
 
 namespace Source\Http\Controller\Site;
 
-use Source\Model\Note;
+use Source\Model\Login;
+use Source\Support\Log;
 use CoffeeCode\Router\Router;
 use Source\Http\Controller\Controller;
-use Source\Model\Login;
 
 class Site extends Controller
 {
@@ -19,10 +19,8 @@ class Site extends Controller
 
     public function home(): void
     {
-        $logged_user_id = Login::user()?->id;
-
-        $notes = Note::find(['user' => $logged_user_id])->object();
-
+        $notes = Login::user()->notes();
+        
         echo $this->blade->render('site.home', [
             'notes' => $notes
         ]);

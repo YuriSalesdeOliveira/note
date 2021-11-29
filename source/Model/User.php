@@ -11,4 +11,9 @@ class User extends Model
         'password' => 'require',
         'is_admin' => 'require'
     ];
+
+    public function notes(): array
+    {
+        return Note::find(['user' => $this->id])->object();
+    }
 }

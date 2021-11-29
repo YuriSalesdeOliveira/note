@@ -25,9 +25,9 @@
 
                     </div>
                 <?php endif; ?>
-                <?php if($message = flashGet('success', 'register')): ?>
+                <?php if($success = flashGet('success', 'register')): ?>
                     <div class="message highlight-success">
-                        <?php echo e($message); ?>
+                        <?php echo e($success); ?>
 
                     </div>
                 <?php endif; ?>

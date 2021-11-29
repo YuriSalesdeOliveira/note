@@ -6,7 +6,7 @@ session_start();
 use CoffeeCode\Router\Router;
 
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
-
+logs('site')->debug('MENSAGEM');
 $router = new Router(SITE['root']);
 
 $router->namespace('Source\Http\Controller\Site');

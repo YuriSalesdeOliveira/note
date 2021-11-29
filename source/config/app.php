@@ -22,7 +22,8 @@ define('PATH', [
     'public' => dirname(dirname(__DIR__)) . '/public',
     'view' => dirname(__DIR__) . '/view',
     'cache' => dirname(__DIR__) . '/cache',
-    'language' => dirname(__DIR__) . '/language'
+    'language' => dirname(__DIR__) . '/language',
+    'config' => dirname(__DIR__) . '/config'
 ]);
 
 define("DB_CONNECTION_CONFIG", [
