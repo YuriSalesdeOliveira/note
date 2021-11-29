@@ -16,3 +16,8 @@ function flashGet(string $type, string $key = ''): string|array|null
 {
     return Flash::get($type, $key);
 }
+
+function logs()
+{
+    
+}
