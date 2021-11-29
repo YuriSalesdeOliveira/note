@@ -24,6 +24,10 @@ class ComposerStaticInitc5e1043ff844bf7dc4a521e5c36af617
         array (
             'voku\\' => 5,
         ),
+        'T' => 
+        array (
+            'TelegramBot\\Api\\' => 16,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -74,6 +78,10 @@ class ComposerStaticInitc5e1043ff844bf7dc4a521e5c36af617
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'TelegramBot\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/telegram-bot/api/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (

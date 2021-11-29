@@ -6,5 +6,6 @@ class TelegramHandler extends AbstractHandler
 {
     public function execute(array $log): void
     {
+        print_r($log);
     }
 }

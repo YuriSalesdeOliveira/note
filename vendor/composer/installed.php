@@ -247,6 +247,15 @@
                 0 => '2.3',
             ),
         ),
+        'telegram-bot/api' => array(
+            'pretty_version' => 'v2.3.23',
+            'version' => '2.3.23.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../telegram-bot/api',
+            'aliases' => array(),
+            'reference' => '4565a9f1339d9f584bc9d9073feab1bfe6b0f7ea',
+            'dev_requirement' => false,
+        ),
         'voku/portable-ascii' => array(
             'pretty_version' => '1.5.6',
             'version' => '1.5.6.0',
