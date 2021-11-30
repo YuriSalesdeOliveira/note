@@ -30,4 +30,9 @@ trait Attributes
     {
         unset($this->attributes[$key]);
     }
+
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
 }

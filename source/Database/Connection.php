@@ -5,33 +5,59 @@ namespace Source\Database;
 use PDO;
 use PDOException;
 
-class Connection
+class Connection extends AbstractDataBase implements InterfaceConnection
 {
-    private PDO $instance;
+    protected PDO $PDOConnection;
+    protected PDOException $error;
+    protected bool|array $result;
 
-    public function createConnection(string $driver, array $config): PDO
+    protected function connection(): PDO
     {
-        [$host, $port, $dbname, $charset,
-        $username, $password, $options] = array_values($config);
+        if (!isset($this->PDOConnection)) {
 
-        if (!isset($this->instance)) {
-
-            try {
-
-                $this->instance = new PDO(
-                    "{$driver}:host={$host};
-                        port={$port};dbname={$dbname};charset={$charset}",
-                    $username,
-                    $password,
-                    $options
-                );
-
-            } catch (PDOException $e) {
-                die('Erro no banco: ' . $e->getMessage());
-                // não esquecer que tenho que guardar esses erros em algum arquivo
-            }
+            $this->PDOConnection = $this->createConnection(DATA_BASE_CONFIG);
         }
 
-        return $this->instance;
+        return $this->PDOConnection;
+    }
+
+    public function execute(string $sql, ?array $params = null): static
+    {
+        $connection = $this->connection();
+
+        try {
+            
+            $statement = $connection->prepare($sql);
+            $statement->execute($params);
+            
+            $this->result = $this->modifyOrQuery($sql) === 'query'?
+            $statement->fetchAll(PDO::FETCH_ASSOC) :
+            true;
+
+        } catch (PDOException $e) {
+
+            $this->error = $e;
+            //salvar em arquivo de log
+            $this->result = false;
+        }
+
+        return $this;
+    }
+
+    protected function modifyOrQuery($sql)
+    {
+        return str_contains(strtolower($sql), 'select') ? 'query' : 'modify';
+    }
+
+    public function result(): bool|array
+    {
+        return $this->result;
+    }
+
+    public function error(): bool|PDOException
+    {
+        if (empty($this->error)) return false;
+
+        return $this->error;
     }
 }

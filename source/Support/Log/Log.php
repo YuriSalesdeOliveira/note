@@ -38,8 +38,19 @@ class Log
     {
         if (isset($channel_config['handlers'])) {
 
-            foreach ($channel_config['handlers'] as $handler => $level)
+            foreach ($channel_config['handlers'] as $handler => $level) {
+
+                if (is_object($level)) {
+                    
+                    $handler = $level;
+
+                    $logger->pushHandler($handler);
+
+                    continue;
+                }
+                
                 $logger->pushHandler(new $handler($level));
+            }
         }
 
         return $logger;

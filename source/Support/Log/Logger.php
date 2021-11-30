@@ -17,6 +17,17 @@ class Logger implements LoggerInterface
     const INFO      = 200;
     const DEBUG     = 100;
 
+    protected static $levels = [
+        self::DEBUG     => 'DEBUG',
+        self::INFO      => 'INFO',
+        self::NOTICE    => 'NOTICE',
+        self::WARNING   => 'WARNING',
+        self::ERROR     => 'ERROR',
+        self::CRITICAL  => 'CRITICAL',
+        self::ALERT     => 'ALERT',
+        self::EMERGENCY => 'EMERGENCY',
+    ];
+
     protected string $channel;
 
     protected array $handlers;
@@ -51,14 +62,15 @@ class Logger implements LoggerInterface
         return $this;
     }
 
-    private function addLog(int $level, string $message, array $context)
+    private function addLog(int $level, string $message, array $context = [])
     {
         $log = [
             'level' => $level,
+            'level_name' => self::$levels[$level],
             'message' => $message,
             'context' => $context,
             'channel' => $this->channel,
-            'datetime' => new DateTimeImmutable(null, $this->timezone),
+            'date_time' => new DateTimeImmutable(null, $this->timezone),
         ];
 
         foreach ($this->handlers as $handler) $handler->handle($log);

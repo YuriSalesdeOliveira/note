@@ -25,10 +25,10 @@ class Email
         $this->mail->SMTPSecure = 'tls';
         $this->mail->CharSet = 'utf-8';
 
-        $this->mail->Host = MAIL['host'];
-        $this->mail->Username = MAIL['username'];
-        $this->mail->Password = MAIL['password'];
-        $this->mail->Port = MAIL['port'];
+        $this->mail->Host = EMAIL_CONFIG['host'];
+        $this->mail->Username = EMAIL_CONFIG['username'];
+        $this->mail->Password = EMAIL_CONFIG['password'];
+        $this->mail->Port = EMAIL_CONFIG['port'];
     }
 
     public function add(string $subject, string $body,
@@ -49,8 +49,8 @@ class Email
         return $this;
     }
 
-    public function send(string $from_name = MAIL['from_name'],
-        string $from_email = MAIL['from_email']): bool
+    public function send(string $from_name = EMAIL_CONFIG['from_name'],
+        string $from_email = EMAIL_CONFIG['from_email']): bool
     {
         try {
 

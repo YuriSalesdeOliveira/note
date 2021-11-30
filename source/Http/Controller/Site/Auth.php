@@ -95,7 +95,7 @@ class Auth extends Controller
         ]);
 
         if ($errors = $validate->errors()) {
-            // salvar no arquivo de log
+
             flashAdd($errors);
 
             $this->router->redirect('site.home');
@@ -115,7 +115,15 @@ class Auth extends Controller
 
             $note = Note::find(['id' => $data['id']])->first();
             
-            if (!$note) $this->router->redirect('site.home'); // salvar no arquivo de log
+            if (!$note) {
+                
+                logs('auth')
+                ->critical('createOrUpdateNote: usuário tentou informa id da nota manualmente', [
+                    'user' => Login::user()->getAttributes()
+                ]);
+
+                $this->router->redirect('site.home');
+            }
 
             $note->title = $data['title'];
             $note->content = $data['content'];
@@ -210,11 +218,21 @@ class Auth extends Controller
 
             $user->password = password_hash($data['new_password'], PASSWORD_DEFAULT);
 
-            if ($user->save())
-                flashAdd(['update_profile' => 'Senha atualizada.'], 'success');
-            else
-                flashAdd(['update_profile' => 'Erro ao atualizar a senha.']);
+            [$message, $type] = ['Senha atualizada.', 'success'];
 
+            if (!$user->save()) {
+
+                logs('auth')->critical('updatePassword: erro ao tentar salvar usuário no banco', [
+                    'PDOException' => [
+                        'code' => $user->error()->getCode(),
+                        'message' => $user->error()->getMessage()
+                    ]
+                ]);
+                
+                [$message, $type] = ['Erro ao atualizar a senha.', 'error'];
+            }
+            
+            flashAdd(['update_profile' => $message], $type);
         }
 
         $this->router->redirect('site.profile');
@@ -255,10 +273,22 @@ class Auth extends Controller
             $user->email
         )->send();
 
-        // if ($email->error())
-        // guardar no arquivo de log
+        [$message, $type] = ['Enviamos um link de recuperação para o seu e-mail.', 'success'];
 
-        flashAdd(['forget' => 'Enviamos um link de recuperação para o seu e-mail.'], 'success');
+        if ($email->error()) {
+
+            logs('auth')->error('forget: erro ao enviar o email de recuperação de senha', [
+                'exception' => [
+                    'code' => $email->error()->getCode(),
+                    'message' => $email->error()->getMessage()
+                ],
+                'user' => $user->getAttributes()
+            ]);
+
+            [$message, $type] = ['Não foi possivel recuperar. Tente novamente.', 'error'];
+        }
+
+        flashAdd(['forget' => $message], $type);
 
         $this->router->redirect('web.forget');
     }
@@ -301,10 +331,11 @@ class Auth extends Controller
         $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
         $user->forget = null;
 
-        if ($user->save())
-            flashAdd(['login' => 'Sua senha foi atualizada.'], 'success');
-        else
-            flashAdd(['login' => $error_forget]);
+        [$message, $type] = $user->save() ?
+        ['Sua senha foi atualizada.', 'success'] :
+        [$error_forget, 'error'];
+
+        flashAdd(['login' => $message], $type);
 
         unset($_SESSION['forget']);
         unset($_SESSION['forget_compare']);

@@ -27,12 +27,16 @@ return [
 
         'site' => [
             'handlers' => [
-                TelegramHandler::class => Logger::DEBUG
+                new TelegramHandler(TELEGRAM_CONFIG['bot_token'], TELEGRAM_CONFIG['chat_id'],
+                    Logger::DEBUG)
             ]
         ],
 
-        'web' => [
-
+        'auth' => [
+            'handlers' => [
+                new TelegramHandler(TELEGRAM_CONFIG['bot_token'], TELEGRAM_CONFIG['chat_id'],
+                    Logger::DEBUG)
+            ]
         ]
 
     ]

@@ -3,7 +3,6 @@
 namespace Source\Http\Controller\Site;
 
 use Source\Model\Login;
-use Source\Support\Log;
 use CoffeeCode\Router\Router;
 use Source\Http\Controller\Controller;
 

@@ -26,7 +26,8 @@ define('PATH', [
     'config' => dirname(__DIR__) . '/config'
 ]);
 
-define("DB_CONNECTION_CONFIG", [
+define("DATA_BASE_CONFIG", [
+    'driver' => 'mysql',
     "host" => "db",
     "port" => "3306",
     "dbname" => "notes",
@@ -41,11 +42,16 @@ define("DB_CONNECTION_CONFIG", [
     ]
 ]);
 
-define('MAIL', [
+define('EMAIL_CONFIG', [
     'host' => 'smtp.mailtrap.io',
     'username' => '78cb807423bb71',
     'password' => '2f9c95d8fd7349',
     'port' => '2525',
     'from_name' => 'Yuri Oliveira',
     'from_email' => 'yuri_oli@hotmail.com',
+]);
+
+define('TELEGRAM_CONFIG', [
+    'bot_token' => '2113671801:AAEu4oQR3rsrHVd5xOI1-xVWrVr5SfPpxTU',
+    'chat_id' => 2125063068
 ]);

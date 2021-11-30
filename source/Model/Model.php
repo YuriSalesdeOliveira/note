@@ -4,9 +4,11 @@ namespace Source\Model;
 
 use PDO;
 use Exception;
+use PDOException;
 use PDOStatement;
-use Source\Database\MysqlConnection;
 use Source\Traits\Attributes;
+use Source\Database\Connection;
+use Source\Database\InterfaceConnection;
 
 abstract class Model
 {
@@ -16,14 +18,15 @@ abstract class Model
     protected static array $columns;
     protected static string $primary = 'id';
     protected static bool $timestamp = true;
-    protected PDO $connection;
-    protected PDOStatement $statement;
+    protected InterfaceConnection $connection;
+    protected PDOException $error;
+    protected array $query_result;
 
     public function __construct(array $attributes = [])
     {
         $this->attributes = $attributes;
 
-        $this->connection = (new MysqlConnection())->connection();
+        $this->connection = new Connection();
     }
 
     public function remove(): bool
@@ -43,9 +46,9 @@ abstract class Model
     {
         $sql = "DELETE FROM " . static::$entity . $this->where($filters);
         
-        $stmt = $this->connection->prepare($sql);
+        if ($this->connection->execute($sql, $filters)->result()) return true;
 
-        if ($stmt->execute($filters)) return true;
+        $this->error = $this->connection->error();
 
         return false;
     }
@@ -68,11 +71,12 @@ abstract class Model
         $sql = "INSERT INTO " . static::$entity . ' (' . implode(',', $attributes_keys)
             . ') VALUES (:' . implode(', :', $attributes_keys) . ')';
 
-        $stmt = $this->connection->prepare($sql);
-
-        if ($stmt->execute($this->attributes)) return true;
+        if ($this->connection->execute($sql, $this->attributes)->result()) return true;
+        
+        $this->error = $this->connection->error();
 
         return false;
+
     }
 
     protected function update(): bool
@@ -86,9 +90,9 @@ abstract class Model
         $sql = 'UPDATE ' . static::$entity . $this->set($attributes_keys)
             . $this->where([static::$primary => $this->{static::$primary}]);
 
-        $stmt = $this->connection->prepare($sql);
-
-        if ($stmt->execute($this->attributes)) return true;
+        if ($this->connection->execute($sql, $this->attributes)->result()) return true;
+    
+        $this->error = $this->connection->error();
 
         return false;
     }
@@ -129,14 +133,13 @@ abstract class Model
         return $required_columns;
     }
 
-    public static function find(array $filters = [], string $columns = '*')
+    public static function find(array $filters = [], string $columns = '*'): static
     {
-        return (new static)->getResultFromSelect($filters, $columns);
-    }
+        $instance = new static();
 
-    public static function all()
-    {
-        return (new static)->getResultFromSelect();
+        $instance->getResultFromSelect($filters, $columns);
+
+        return $instance;
     }
 
     public function first(): object|false
@@ -146,34 +149,42 @@ abstract class Model
         return empty($result) ? false : $result[0];
     }
 
-    public function fetch(): array
+    public function fetch(): bool|array
     {
-        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return isset($this->query_result) ? $this->query_result : false;
     }
 
-    public function object(): array
+    public function object(): bool|array
     {
-        $result = $this->fetch();
-        $objects = [];
+        if (is_array($result = $this->fetch())) {
 
-        foreach ($result as $row) {
-            $objects[] = new static($row);
+            $objects = [];
+
+            foreach ($result as $row) {
+                $objects[] = new static($row);
+            }
+
+            return $objects;
         }
-
-        return $objects;
+        
+        return false;
     }
 
-    protected function getResultFromSelect(array $filters = [], string $columns = '*'): static
+    protected function getResultFromSelect(array $filters = [], string $columns = '*'): bool
     {
         $sql = "SELECT {$columns} FROM " . static::$entity
             . $this->where($filters);
 
-        $stmt = $this->connection->prepare($sql);
+        if (is_array($query_result = $this->connection->execute($sql, $filters)->result())) {
 
-        if ($stmt->execute($filters))
-            $this->statement = $stmt;
+            $this->query_result = $query_result;
 
-        return $this;
+            return true;
+        }
+    
+        $this->error = $this->connection->error();
+
+        return false;
     }
 
     protected function where(array $filters): string
@@ -195,5 +206,12 @@ abstract class Model
         }
 
         return substr($sql, 0, -1);
+    }
+
+    public function error(): bool|PDOException
+    {
+        if (empty($this->error)) return false;
+
+        return $this->error;
     }
 }
