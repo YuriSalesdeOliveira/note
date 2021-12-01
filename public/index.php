@@ -17,7 +17,7 @@ $router->namespace('Source\Http\Controller\Site');
 
 $router->group(null);
 $router->get('/entrar', 'Web:login', 'web.login');
-$router->get('/cadastrar', 'Web:register', 'web.register');
+$router->get('/cadastrar', 'Web:registerUser', 'web.registerUser');
 $router->get('/recuperar', 'Web:forget', 'web.forget');
 $router->get('/recuperar/senha/{email}/{forget}', 'Web:recoverPassword', 'web.recoverPassword');
 
@@ -36,7 +36,7 @@ $router->get('/perfil', 'Site:profile', 'site.profile');
 
 $router->group(null);
 $router->post('/entrar', 'Auth:login', 'auth.login');
-$router->post('/cadastrar', 'Auth:register', 'auth.register');
+$router->post('/cadastrar', 'Auth:registerUser', 'auth.registerUser');
 $router->get('/sair', 'Auth:logout', 'auth.logout');
 
 $router->post('/recuperar', 'Auth:forget', 'auth.forget');

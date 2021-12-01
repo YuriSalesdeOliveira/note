@@ -45,7 +45,7 @@
 
             <div class="button_link_container">
                 <a href="{{ $router->route('web.login') }}" class="button_link">fazer login</a> |
-                <a href="{{ $router->route('web.register') }}" class="button_link">registre-se</a>
+                <a href="{{ $router->route('web.registerUser') }}" class="button_link">registre-se</a>
             </div>
 
         </div>

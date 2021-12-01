@@ -17,14 +17,14 @@
         </div>
         <div class="card_body" centralize>
 
-            <form action="{{ $router->route('auth.register') }}" method="post">
+            <form action="{{ $router->route('auth.registerUser') }}" method="post">
     
-                @if ($error = flashGet('error', 'register'))
+                @if ($error = flashGet('error', 'registerUser'))
                     <div class="message highlight-error">
                         {{ $error }}
                     </div>
                 @endif
-                @if ($success = flashGet('success', 'register'))
+                @if ($success = flashGet('success', 'registerUser'))
                     <div class="message highlight-success">
                         {{ $success }}
                     </div>

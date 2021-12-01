@@ -42,7 +42,7 @@ class Auth extends Controller
         $this->router->redirect('web.login');
     }
 
-    public function register($data): void
+    public function registerUser($data): void
     {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
@@ -58,7 +58,7 @@ class Auth extends Controller
             
             flashAdd($errors);
 
-            $this->router->redirect('web.register');
+            $this->router->redirect('web.registerUser');
         }
 
         $user = new User();
@@ -70,14 +70,30 @@ class Auth extends Controller
 
         if ($user->save()) {
             
-            flashAdd(['register' => 'Bem vindo! Agora só falta fazer o login.'], 'success');
+            $credentials = [
+                'email' => $data['email'],
+                'password' => $data['password']
+            ];
+
+            if (!Login::attempt($credentials)) {
+
+                logs('auth')->error('registerUser: Houve um erro ao tentar logar depois do cadastro.', [
+                    'user' => User::find(['email' => $credentials['email']])->first()
+                ]);
+
+                flashAdd(['registerUser' => 'Falha ao tentar logar depois do cadastro.']);
+                
+                $this->router->redirect('web.registerUser');        
+            }
+            
+            $this->router->redirect('site.home');
             
         } else {
 
-            flashAdd(['register' => 'Falha ao fazer o cadastro.']);
+            flashAdd(['registerUser' => 'Falha ao fazer o cadastro.']);
         }
 
-        $this->router->redirect('web.register');
+        $this->router->redirect('web.registerUser');
 
     }
     
@@ -87,19 +103,7 @@ class Auth extends Controller
 
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
-        $validate = new Validate($data);
-
-        $validate->validate([
-            'title' => ['required'],
-            'content' => ['required']
-        ]);
-
-        if ($errors = $validate->errors()) {
-
-            flashAdd($errors);
-
-            $this->router->redirect('site.home');
-        }
+        if (empty($data['title']) && empty($data['content'])) $this->router->redirect('site.home');
 
         if (empty($data['id'])) {
 

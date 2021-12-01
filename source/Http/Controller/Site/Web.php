@@ -22,9 +22,9 @@ class Web extends Controller
         echo $this->blade->render('site.login');
     }
 
-    public function register(): void
+    public function registerUser(): void
     {
-        echo $this->blade->render('site.register');
+        echo $this->blade->render('site.registerUser');
     }
 
     public function forget(): void
