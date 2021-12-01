@@ -6,8 +6,21 @@ body {
     align-items: center;
 }
 
+@media (max-width: 1000px) {
+    body {
+        height: auto;
+    }
+    
+}
+
 :root {
     --base_width: 800px;
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --base_width: 100%;
+    }
 }
 
 /*
@@ -23,6 +36,12 @@ header.main_header {
     padding-bottom: 10px;
     margin-bottom: 50px;
     border-bottom: 1px solid #ececec;
+}
+
+@media (max-width: 1000px) {
+    header.main_header {
+        padding: 0 15px 10px 15px;
+    }
 }
 
 header.main_header div.main_header_logo {
@@ -90,6 +109,13 @@ div.profile nav.profile_dropdown a:hover {
     color: var(--gray_color);
 }
 
+@media (max-width: 1000px) {
+    
+    div.profile nav.profile_dropdown {
+        right: 15px;
+    }
+}
+
 div.profile nav.profile_dropdown.show {
     display: flex;
 }
@@ -107,6 +133,12 @@ div.title {
     margin-bottom: 50px;
 }
 
+@media (max-width: 1000px) {
+    div.title {
+        padding: 0 10px;
+    }
+}
+
 div.title span {
     display: flex;
     align-items: center;
@@ -119,6 +151,15 @@ div.title span {
 div.title span i {
     color: var(--gray_color_light_01);
     margin-left: 2px;
+}
+
+/**/
+
+@media (max-width: 1000px) {
+    main {
+        padding: 0 10px;
+        margin-bottom: 50px;
+    }
 }
 
 main.profile {
@@ -158,8 +199,7 @@ main.profile div.forms_container form {
 }
 
 main.profile div.forms_container  form div.form_item,
-main.profile div.forms_container  form div.form_item_button,
-main.profile div.forms_container  form button {
+main.profile div.forms_container  form div.form_item_button {
     width: 60%;
     margin-bottom: 10px;
 }
@@ -186,11 +226,52 @@ main.profile div.forms_container  form button:hover {
     color: var(--gray_color);
 }
 
+
+@media (max-width: 1000px) {
+    
+    main.profile {
+        flex-wrap: wrap;
+    }
+
+    main.profile nav.forms_nav,
+    main.profile div.forms_container {
+        width: 100%;
+    }
+
+    main.profile div.forms_container {
+        margin-top: 50px;
+    }
+
+    main.profile div.forms_container  form div.form_item,
+    main.profile div.forms_container  form div.form_item_button {
+        width: 75%;
+        margin-bottom: 10px;
+    }
+
+    main.profile div.forms_container  form input,
+    main.profile div.forms_container  form button {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    main.profile div.forms_container  form input,
+    main.profile div.forms_container  form button {
+        height: 50px;
+    }
+}
+
 main.notes {
     width: var(--base_width);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+}
+
+@media (max-width: 1000px) {
+    main.notes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 main.notes div.notes_item {
@@ -267,6 +348,17 @@ div.modal_add_note {
     border-radius: 5px;
     overflow: hidden;
     background-color: var(--light_color);
+}
+
+@media (max-width: 1000px) {
+    div.modal_add_note {
+        width: 100%;
+        min-width: unset;
+        height: 600px;
+        border-radius: 5px;
+        overflow: hidden;
+        background-color: var(--light_color);
+    }
 }
 
 div.modal_add_note form {

@@ -4,6 +4,12 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+@media (max-width: 1000px) {
+    html {
+        font-size: 20px;
+    }
+}
+
 [centralize] {
     display: flex;
     justify-content: center;
