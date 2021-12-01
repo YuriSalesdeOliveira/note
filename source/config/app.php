@@ -3,7 +3,7 @@
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
-define('DEVELOPMENT', $_SERVER['SERVER_NAME'] === 'localhost' ? true : false);
+define('DEVELOPMENT', $_SERVER['SERVER_NAME'] === 'localhost' ? true : true);
 
 define('LANGUAGE', 'pt-br');
 
@@ -15,7 +15,7 @@ if (!DEVELOPMENT) {
 
 define('SITE', [
     'name' => 'Notes',
-    'root' => 'http://localhost/note/public',
+    'root' => 'http://192.168.1.10/note/public',
 ]);
 
 define('PATH', [

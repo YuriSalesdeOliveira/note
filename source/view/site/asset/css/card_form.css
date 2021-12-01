@@ -1,7 +1,11 @@
+body {
+    width: 100%;
+    height: 100vh;
+}
+
 div.register_card {
     width: 30%;
     min-width: 500px;
-    height: 470px;
     display: grid;
     grid-template-rows: 80px 1fr 50px;
     overflow: hidden;
@@ -12,7 +16,6 @@ div.register_card {
 div.forget_card {
     width: 30%;
     min-width: 500px;
-    height: 400px;
     display: grid;
     grid-template-rows: 80px 1fr 50px;
     overflow: hidden;
@@ -23,7 +26,6 @@ div.forget_card {
 div.recover_password_card {
     width: 30%;
     min-width: 500px;
-    height: 400px;
     display: grid;
     grid-template-rows: 80px 1fr 50px;
     overflow: hidden;
@@ -34,12 +36,34 @@ div.recover_password_card {
 div.login_card {
     width: 30%;
     min-width: 500px;
-    height: 420px;
     display: grid;
     grid-template-rows: 80px 1fr 50px;
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0, .2);
+}
+
+@media (max-width: 1000px) {
+    
+    div.register_card,
+    div.forget_card,
+    div.recover_password_card,
+    div.login_card {
+        width: 60%;
+        height: auto;
+        min-width: unset;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 800px) {
+
+    div.register_card,
+    div.forget_card,
+    div.recover_password_card,
+    div.login_card {
+        width: 100%;
+    }
 }
 
 div.card_header {
@@ -81,6 +105,7 @@ div.card_body form {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 50px;
     margin-bottom: 10px;
 }
 
@@ -102,7 +127,31 @@ div.card_body form button {
     background-color: var(--green_color_dark);
 }
 
+@media (max-width: 1000px) {
+
+    div.card_body form div.form_item {
+        width: 70%;
+    }
+
+    div.card_body form input {
+        height: 50px;
+        border: 1px solid black;
+    }
+
+    div.card_body form button {
+        width: 70%;
+        height: 50px;
+    }
+
+    div.card_body form input,
+    div.card_body form button {
+        border-radius: 5px;
+    }
+}
+
 div.card_body div.button_link_container {
+    margin-top: 10px;
+    margin-bottom: 30px;
     font-size: .9rem;
     color: var(--gray_color);
 }

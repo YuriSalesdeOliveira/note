@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="<?php echo e(assets('site/asset/css/style.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(assets('site/asset/css/forms.min.css')); ?>">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Aplicativo de notas - registrar</title>
 </head>
@@ -67,7 +67,11 @@
         
             </form>
 
-            <a href="<?php echo e($router->route('web.login')); ?>" class="button_link">fazer login</a>
+            <div class="button_link_container">
+                <a href="<?php echo e($router->route('web.forget')); ?>" class="button_link">esqueci a senha</a> |
+                <a href="<?php echo e($router->route('web.login')); ?>" class="button_link">fazer login</a>
+            </div>
+
 
         </div>
         <div class="card_footer">
