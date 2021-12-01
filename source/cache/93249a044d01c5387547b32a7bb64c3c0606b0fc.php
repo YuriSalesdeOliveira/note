@@ -48,7 +48,7 @@
 
             <div class="button_link_container">
                 <a href="<?php echo e($router->route('web.login')); ?>" class="button_link">fazer login</a> |
-                <a href="<?php echo e($router->route('web.register')); ?>" class="button_link">registre-se</a>
+                <a href="<?php echo e($router->route('web.registerUser')); ?>" class="button_link">registre-se</a>
             </div>
 
         </div>

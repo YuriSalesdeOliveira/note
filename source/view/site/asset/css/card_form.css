@@ -76,6 +76,13 @@ div.card_header {
     color: var(--gray_color_light_01);
 }
 
+@media (max-width: 1000px) {
+    
+    div.card_header {
+        font-size: 1.8rem;
+    }
+}
+
 div.card_header i {
     font-size: 3rem;
 }
