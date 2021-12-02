@@ -244,7 +244,7 @@ main.profile div.forms_container  form button:hover {
 
     main.profile div.forms_container  form div.form_item,
     main.profile div.forms_container  form div.form_item_button {
-        width: 75%;
+        width: 90%;
         margin-bottom: 10px;
     }
 
@@ -258,6 +258,11 @@ main.profile div.forms_container  form button:hover {
     main.profile div.forms_container  form button {
         height: 50px;
     }
+
+    main.profile div.forms_container  form button {
+        font-size: inherit;
+    }
+
 }
 
 main.notes {
