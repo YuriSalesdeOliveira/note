@@ -19,7 +19,8 @@
             let noteData = {
                 'id': note.dataset.note_id,
                 'content': null,
-                'title': null
+                'title': null,
+                'color_id': note.dataset.note_color_id
             }
 
             let childrensNote = note.children;
@@ -36,7 +37,7 @@
             return noteData
         }
 
-        function showModalWithContent(modalContainer, noteId, noteContent, noteTitle)
+        function showModalWithContent(modalContainer, noteId, noteContent, noteTitle, noteColorId)
         {
             let modal =  document.querySelector(`.${modalContainer}`);
 
@@ -44,6 +45,9 @@
 
             let form = modal.querySelector('form');
 
+            let colorsContainer = form.querySelector('.color_note');
+            let color = colorsContainer.querySelector(`input[id="${noteColorId}"]`);
+            
             let input = form.querySelector('input');
             let textarea = form.querySelector('textarea');
             
@@ -52,13 +56,12 @@
                 input.value = noteTitle;
                 textarea.value = noteContent;
                 form.appendChild(inputNoteId);
+                color.checked = true;
             }
 
             function removeContent()
             {
-                input.value = null;
-                textarea.value = null;
-                form.removeChild(inputNoteId);
+                form.reset();
             }
             
             addContent();
@@ -79,7 +82,7 @@
 
         let noteData = getNoteContent(note);
 
-        showModalWithContent('modal_container', noteData.id, noteData.content, noteData.title);
+        showModalWithContent('modal_container', noteData.id, noteData.content, noteData.title, noteData.color_id);
         
     }
 

@@ -5,6 +5,7 @@ namespace Source\Http\Controller\Site;
 use Source\Model\Login;
 use CoffeeCode\Router\Router;
 use Source\Http\Controller\Controller;
+use Source\Model\NoteColor;
 
 class Site extends Controller
 {
@@ -19,9 +20,12 @@ class Site extends Controller
     public function home(): void
     {
         $notes = Login::user()->notes();
+
+        $colors = NoteColor::find()->object();
         
         echo $this->blade->render('site.home', [
-            'notes' => $notes
+            'notes' => $notes,
+            'colors' => $colors
         ]);
     }
 
@@ -34,4 +38,6 @@ class Site extends Controller
         ]);
     }
 }
+
+
 

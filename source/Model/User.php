@@ -12,7 +12,7 @@ class User extends Model
         'is_admin' => 'require'
     ];
 
-    public function notes(): array
+    public function notes(): bool|array
     {
         return Note::find(['user' => $this->id])->object();
     }

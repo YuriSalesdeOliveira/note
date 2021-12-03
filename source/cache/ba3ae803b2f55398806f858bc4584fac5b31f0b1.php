@@ -43,42 +43,61 @@
 
     <main class="notes">
 
-        <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        
-            <div class="notes_item" data-note_id="<?php echo e($note->id); ?>">
-                <div class="notes_item_title"><?php echo e($note->title); ?></div>
-                <div class="notes_item_content"><?php echo e($note->content); ?></div>
-                <div class="notes_item_create_data"><?php echo e(strftime('%A, %d de %B de %Y', strtotime($note->created_at))); ?></div>
-                <a href="<?php echo e($router->route('auth.deleteNote', ['note_id' => $note->id])); ?>" class="notes_item_delete">x</a>
-            </div>
+        <?php if($notes): ?>
+            <?php $__currentLoopData = $notes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            
+                <div class="notes_item" data-note_id="<?php echo e($note->id); ?>" data-note_color_id="<?php echo e($note->color()->id ?? null); ?>"
+                    style="color:<?php echo e($note->color()->color); ?>;background-color:<?php echo e($note->color()->background_color); ?>;">
+                    
+                    <div class="notes_item_title"><?php echo e($note->title); ?></div>
+                    <div class="notes_item_content"><?php echo e($note->content); ?></div>
+                    <div class="notes_item_create_data"><?php echo e(strftime('%A, %d de %B de %Y', strtotime($note->created_at))); ?></div>
+                    <a href="<?php echo e($router->route('auth.deleteNote', ['note_id' => $note->id])); ?>" class="notes_item_delete">x</a>
 
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endif; ?>
 
     </main>
 
     <div class="modal_container">
 
-        <div class="modal_body">
+        <div class="modal_add_note">
 
-            <div class="modal_add_note">
+            <form action="<?php echo e($router->route('auth.createOrUpdateNote')); ?>" method="post">
 
-                <form action="<?php echo e($router->route('auth.createOrUpdateNote')); ?>" method="post">
+                <input type="text" name="title" placeholder="Titulo">
     
-                    <input type="text" name="title" placeholder="Titulo">
-        
-                    <textarea name="content" cols="30" rows="10" placeholder="Conteúdo"></textarea>
-    
-                    <div class="modal_add_note_actions">
-    
-                        <button type="submit">
-                            <i class='bx bxs-save'></i>
-                        </button>
-    
+                <textarea name="content" cols="30" rows="10" placeholder="Conteúdo"></textarea>
+
+                <div class="modal_add_note_actions">
+
+                    <div class="color_note">
+
+                        <?php if($colors): ?>
+                            <?php $__currentLoopData = $colors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            
+                            <input type="radio" id="<?php echo e($color->id); ?>"
+                                data-color_color="<?php echo e($color->color); ?>"
+                                data-color_background_color="<?php echo e($color->background_color); ?>"
+                                name="color" value="<?php echo e($color->id); ?>" <?php echo e($key === 0 ? 'checked' : null); ?>>
+
+                            <label for="<?php echo e($color->id); ?>"
+                                style="background-color: <?php echo e($color->background_color); ?>;"></label>
+
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
+
                     </div>
-    
-                </form>
-    
-            </div>
+
+                    <button type="submit">
+                        <i class='bx bxs-save'></i>
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
         

@@ -342,10 +342,6 @@ div.modal_container.modal_show {
     display: flex;
 }
 
-div.modal_container div.modal_body {
-    position: relative;
-}
-
 div.modal_add_note {
     width: 500px;
     min-width: 300px;
@@ -357,12 +353,10 @@ div.modal_add_note {
 
 @media (max-width: 1000px) {
     div.modal_add_note {
-        width: 100%;
+        width: 85%;
         min-width: unset;
-        height: 600px;
-        border-radius: 5px;
-        overflow: hidden;
-        background-color: var(--light_color);
+        height: 65%;
+        margin-bottom: 50px;
     }
 }
 
@@ -381,6 +375,8 @@ div.modal_add_note form input {
     height: 50px;
     border: none;
     font-size: 1.2rem;
+    color: inherit;
+    background-color: inherit;
 }
 
 div.modal_add_note form textarea {
@@ -389,19 +385,50 @@ div.modal_add_note form textarea {
     height: calc(90% - 50px);
     border: none;
     font-size: .9rem;
+    color: inherit;
+    background-color: inherit;
 }
 
 div.modal_add_note form div.modal_add_note_actions {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
     padding: 15px;
     border-top: 1px solid var(--gray_color_light_03);
 }
 
+div.modal_add_note_actions div.color_note {
+    display: flex;
+}
+
+div.modal_add_note_actions div.color_note input[type="radio"]{
+    display: none;
+}
+
+div.modal_add_note_actions div.color_note label {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+div.modal_add_note_actions div.color_note input[type="radio"]:checked + label {
+    border: 1px solid #7171f3;
+}
+
+@media (max-width: 1000px) {
+   
+    div.modal_add_note_actions div.color_note label {
+        width: 25px;
+        height: 25px;
+    }
+}
+
 div.modal_add_note form button {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--gray_color_light);
 }
 

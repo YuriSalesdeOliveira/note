@@ -10,4 +10,13 @@ class Note extends Model
         'content' => 'require',
         'user' => 'require',
     ];
+
+    public function color(): object
+    {
+        if (!$noteColor = NoteColor::find(['id' => $this->color])->first())
+            $noteColor = NoteColor::find(['id' => '1'])->first();
+
+        return $noteColor;
+    }
 }
+

@@ -2,6 +2,7 @@
 
 namespace Source\Database;
 
+use Exception;
 use PDO;
 use PDOException;
 
@@ -9,7 +10,7 @@ class Connection extends AbstractDataBase implements InterfaceConnection
 {
     protected PDO $PDOConnection;
     protected PDOException $error;
-    protected bool|array $result;
+    protected array $query_result;
 
     protected function connection(): PDO
     {
@@ -21,7 +22,7 @@ class Connection extends AbstractDataBase implements InterfaceConnection
         return $this->PDOConnection;
     }
 
-    public function execute(string $sql, ?array $params = null): static
+    public function execute(string $sql, ?array $params = null): bool
     {
         $connection = $this->connection();
 
@@ -30,18 +31,17 @@ class Connection extends AbstractDataBase implements InterfaceConnection
             $statement = $connection->prepare($sql);
             $statement->execute($params);
             
-            $this->result = $this->modifyOrQuery($sql) === 'query'?
-            $statement->fetchAll(PDO::FETCH_ASSOC) :
-            true;
+            if ($this->modifyOrQuery($sql) === 'query')
+                $this->query_result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
+            return true;
 
         } catch (PDOException $e) {
 
             $this->error = $e;
             //salvar em arquivo de log
-            $this->result = false;
+            return false;
         }
-
-        return $this;
     }
 
     protected function modifyOrQuery($sql)
@@ -49,9 +49,12 @@ class Connection extends AbstractDataBase implements InterfaceConnection
         return str_contains(strtolower($sql), 'select') ? 'query' : 'modify';
     }
 
-    public function result(): bool|array
+    public function queryResult(): array
     {
-        return $this->result;
+        if (!isset($this->query_result))
+            throw new Exception('Execute uma consulta para obter um query result.');
+
+        return $this->query_result;
     }
 
     public function error(): bool|PDOException

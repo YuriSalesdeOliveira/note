@@ -34,6 +34,7 @@ if (DEVELOPMENT) {
 
     $minJS = new JS();
     $minJS->add(PATH['view'] . '/site/asset/js/modal.js');
+    $minJS->add(PATH['view'] . '/site/asset/js/changeModalColor.js');
     $minJS->minify(PATH['public'] . '/site/asset/js/modal.min.js');
 
     $minJS = new JS();

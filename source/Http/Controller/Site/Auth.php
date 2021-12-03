@@ -9,6 +9,7 @@ use Source\Support\Email;
 use Source\Support\Validate;
 use Illuminate\Support\Facades\Log;
 use Source\Http\Controller\Controller;
+use Source\Model\NoteColor;
 
 class Auth extends Controller
 {
@@ -105,6 +106,8 @@ class Auth extends Controller
 
         if (empty($data['title']) && empty($data['content'])) $this->router->redirect('site.home');
 
+        $noteColor = isset($data['color']) ? NoteColor::find(['id' => $data['color']])->first() : null;
+            
         if (empty($data['id'])) {
 
             $note = new Note();
@@ -112,6 +115,7 @@ class Auth extends Controller
             $note->title = $data['title'];
             $note->content = $data['content'];
             $note->user = Login::user()->id;
+            $note->color = $noteColor ? $noteColor->id : null;
 
             $belongs_to = $note->user;
 
@@ -131,6 +135,7 @@ class Auth extends Controller
 
             $note->title = $data['title'];
             $note->content = $data['content'];
+            if ($noteColor) $note->color = $noteColor->id;
 
             $belongs_to = $note->user;
         }

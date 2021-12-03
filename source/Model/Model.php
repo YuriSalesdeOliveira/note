@@ -46,7 +46,7 @@ abstract class Model
     {
         $sql = "DELETE FROM " . static::$entity . $this->where($filters);
         
-        if ($this->connection->execute($sql, $filters)->result()) return true;
+        if ($this->connection->execute($sql, $filters)) return true;
 
         $this->error = $this->connection->error();
 
@@ -71,7 +71,7 @@ abstract class Model
         $sql = "INSERT INTO " . static::$entity . ' (' . implode(',', $attributes_keys)
             . ') VALUES (:' . implode(', :', $attributes_keys) . ')';
 
-        if ($this->connection->execute($sql, $this->attributes)->result()) return true;
+        if ($this->connection->execute($sql, $this->attributes)) return true;
         
         $this->error = $this->connection->error();
 
@@ -90,7 +90,7 @@ abstract class Model
         $sql = 'UPDATE ' . static::$entity . $this->set($attributes_keys)
             . $this->where([static::$primary => $this->{static::$primary}]);
 
-        if ($this->connection->execute($sql, $this->attributes)->result()) return true;
+        if ($this->connection->execute($sql, $this->attributes)) return true;
     
         $this->error = $this->connection->error();
 
@@ -142,7 +142,7 @@ abstract class Model
         return $instance;
     }
 
-    public function first(): object|false
+    public function first(): bool|object
     {
         $result = $this->object();
 
@@ -156,7 +156,7 @@ abstract class Model
 
     public function object(): bool|array
     {
-        if (is_array($result = $this->fetch())) {
+        if ($result = $this->fetch()) {
 
             $objects = [];
 
@@ -175,9 +175,9 @@ abstract class Model
         $sql = "SELECT {$columns} FROM " . static::$entity
             . $this->where($filters);
 
-        if (is_array($query_result = $this->connection->execute($sql, $filters)->result())) {
+        if ($this->connection->execute($sql, $filters)) {
 
-            $this->query_result = $query_result;
+            $this->query_result = $this->connection->queryResult();
 
             return true;
         }

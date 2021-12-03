@@ -43,42 +43,61 @@
 
     <main class="notes">
 
-        @foreach ($notes as $note)
-        
-            <div class="notes_item" data-note_id="{{ $note->id }}">
-                <div class="notes_item_title">{{ $note->title }}</div>
-                <div class="notes_item_content">{{ $note->content }}</div>
-                <div class="notes_item_create_data">{{ strftime('%A, %d de %B de %Y', strtotime($note->created_at)); }}</div>
-                <a href="{{ $router->route('auth.deleteNote', ['note_id' => $note->id]) }}" class="notes_item_delete">x</a>
-            </div>
+        @if ($notes)
+            @foreach ($notes as $note)
+            
+                <div class="notes_item" data-note_id="{{ $note->id }}" data-note_color_id="{{ $note->color()->id ?? null}}"
+                    style="color:{{ $note->color()->color }};background-color:{{ $note->color()->background_color }};">
+                    
+                    <div class="notes_item_title">{{ $note->title }}</div>
+                    <div class="notes_item_content">{{ $note->content }}</div>
+                    <div class="notes_item_create_data">{{ strftime('%A, %d de %B de %Y', strtotime($note->created_at)); }}</div>
+                    <a href="{{ $router->route('auth.deleteNote', ['note_id' => $note->id]) }}" class="notes_item_delete">x</a>
 
-        @endforeach
+                </div>
+
+            @endforeach
+        @endif
 
     </main>
 
     <div class="modal_container">
 
-        <div class="modal_body">
+        <div class="modal_add_note">
 
-            <div class="modal_add_note">
+            <form action="{{ $router->route('auth.createOrUpdateNote') }}" method="post">
 
-                <form action="{{ $router->route('auth.createOrUpdateNote') }}" method="post">
+                <input type="text" name="title" placeholder="Titulo">
     
-                    <input type="text" name="title" placeholder="Titulo">
-        
-                    <textarea name="content" cols="30" rows="10" placeholder="Conteúdo"></textarea>
-    
-                    <div class="modal_add_note_actions">
-    
-                        <button type="submit">
-                            <i class='bx bxs-save'></i>
-                        </button>
-    
+                <textarea name="content" cols="30" rows="10" placeholder="Conteúdo"></textarea>
+
+                <div class="modal_add_note_actions">
+
+                    <div class="color_note">
+
+                        @if ($colors)
+                            @foreach ($colors as $key => $color)
+                            
+                            <input type="radio" id="{{ $color->id }}"
+                                data-color_color="{{ $color->color }}"
+                                data-color_background_color="{{ $color->background_color }}"
+                                name="color" value="{{ $color->id }}" {{ $key === 0 ? 'checked' : null }}>
+
+                            <label for="{{ $color->id }}"
+                                style="background-color: {{ $color->background_color }};"></label>
+
+                            @endforeach
+                        @endif
+
                     </div>
-    
-                </form>
-    
-            </div>
+
+                    <button type="submit">
+                        <i class='bx bxs-save'></i>
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
         

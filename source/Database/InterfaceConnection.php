@@ -7,9 +7,9 @@ use PDOException;
 
 interface InterfaceConnection
 {
-    public function execute(string $query, ?array $params = null): static;
+    public function execute(string $sql, ?array $params = null): bool;
 
-    public function result(): bool|array;
+    public function queryResult(): array;
 
     public function error(): bool|PDOException;
 }
