@@ -19,6 +19,10 @@ class Site extends Controller
 
     public function home(): void
     {
+        logs('site')->debug('Apenas testando o StreamHandler', [
+            'context' => Login::user()->getAttributes()
+        ]);
+
         $notes = Login::user()->notes();
 
         $colors = NoteColor::find()->object();

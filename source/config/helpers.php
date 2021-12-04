@@ -34,10 +34,10 @@ function fileWrit(string $file_path, string $content, bool $exists = true): bool
      */
 
     $validation = $exists ? file_exists($file_path) : true;
-
+    
     if ($validation) {
-
-        if ($file = fopen($file_path, 'a')) return false;
+        
+        if (!$file = fopen($file_path, 'a')) return false;
 
         if (fwrite($file, $content) === false || !fclose($file)) return false;
 
@@ -49,7 +49,7 @@ function fileRead(string $file_path, ?int $rows = null): bool|string
 {
     if (file_exists($file_path)) {
 
-        if ($file = fopen($file_path, 'r')) return false;
+        if (!$file = fopen($file_path, 'r')) return false;
 
         $content = '';
 
