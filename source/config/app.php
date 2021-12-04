@@ -3,7 +3,7 @@
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
-define('DEVELOPMENT', $_SERVER['SERVER_NAME'] === 'localhost' ? true : false);
+define('DEVELOPMENT', $_SERVER['SERVER_NAME'] === 'localhost' ? true : true);
 
 define('LANGUAGE', 'pt-br');
 
@@ -15,7 +15,7 @@ if (!DEVELOPMENT) {
 
 define('SITE', [
     'name' => 'Notes',
-    'root' => 'http://',
+    'root' => 'http://192.168.1.10/note/public',
 ]);
 
 define('PATH', [
@@ -23,7 +23,8 @@ define('PATH', [
     'view' => dirname(__DIR__) . '/view',
     'cache' => dirname(__DIR__) . '/cache',
     'language' => dirname(__DIR__) . '/language',
-    'config' => dirname(__DIR__) . '/config'
+    'config' => dirname(__DIR__) . '/config',
+    'storage' => dirname(__DIR__) . '/storage'
 ]);
 
 define("DATA_BASE_CONFIG", [
@@ -43,15 +44,15 @@ define("DATA_BASE_CONFIG", [
 ]);
 
 define('EMAIL_CONFIG', [
-    'host' => '',
-    'username' => '',
-    'password' => '',
-    'port' => '',
-    'from_name' => '',
-    'from_email' => '',
+    'host' => 'smtp.mailtrap.io',
+    'username' => '78cb807423bb71',
+    'password' => '2f9c95d8fd7349',
+    'port' => '2525',
+    'from_name' => 'Yuri Oliveira',
+    'from_email' => 'yuri_oli@hotmail.com',
 ]);
 
 define('TELEGRAM_CONFIG', [
-    'bot_token' => '',
-    'chat_id' => 0
+    'bot_token' => '2113671801:AAEu4oQR3rsrHVd5xOI1-xVWrVr5SfPpxTU',
+    'chat_id' => 2125063068
 ]);

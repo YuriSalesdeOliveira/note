@@ -1,5 +1,6 @@
 <?php
 
+use Source\Support\Log\handler\StreamHandler;
 use Source\Support\Log\Logger;
 use Source\Support\Log\handler\TelegramHandler;
 
@@ -27,15 +28,17 @@ return [
 
         'site' => [
             'handlers' => [
+                new StreamHandler(Logger::DEBUG),
                 new TelegramHandler(TELEGRAM_CONFIG['bot_token'], TELEGRAM_CONFIG['chat_id'],
-                    Logger::DEBUG)
+                Logger::DEBUG)
             ]
         ],
 
         'auth' => [
             'handlers' => [
+                new StreamHandler(Logger::DEBUG),
                 new TelegramHandler(TELEGRAM_CONFIG['bot_token'], TELEGRAM_CONFIG['chat_id'],
-                    Logger::DEBUG)
+                Logger::DEBUG)
             ]
         ]
 
