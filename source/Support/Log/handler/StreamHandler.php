@@ -18,6 +18,6 @@ class StreamHandler extends AbstractHandler
 
     private function writeMessage(string $message)
     {
-        fileWrit(PATH['storage'] . '/log/log.text', $message . '\n');
+        fileWrit(PATH['storage'] . '/log/log.text', "{$message}\n");
     }
 }
