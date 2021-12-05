@@ -14,8 +14,8 @@ if (!DEVELOPMENT) {
 }
 
 define('SITE', [
-    'name' => 'Notes',
-    'root' => 'http://',
+    'name' => '',
+    'root' => '',
 ]);
 
 define('PATH', [
@@ -28,15 +28,15 @@ define('PATH', [
 ]);
 
 define("DATA_BASE_CONFIG", [
-    'driver' => 'mysql',
-    "host" => "db",
-    "port" => "3306",
-    "dbname" => "notes",
-    "charset" => "utf8",
-    "username" => "root",
-    "password" => "root",
-    "options" => [
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+    'driver' => '',
+    'host' => '',
+    'port' => '',
+    'dbname' => '',
+    'charset' => '',
+    'username' => '',
+    'password' => '',
+    'options' => [
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_CASE => PDO::CASE_NATURAL
