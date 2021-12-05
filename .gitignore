@@ -1,2 +1,2 @@
 source/config/app.php
-source/cache
+source/cache/*
