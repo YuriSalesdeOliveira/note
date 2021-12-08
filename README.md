@@ -9,7 +9,7 @@ Aplicação simples para fazer anotações. Para fazer a aplicação eu utilizei
 
 ### desktop
 
-<div>
+<div style="display: flex; flex-wrap: wrap;">
   <image src="https://user-images.githubusercontent.com/54549125/145158948-ed88294c-ceb7-452c-83f8-b5bd8c2fe24a.png" width="50%"/>
   <image src="https://user-images.githubusercontent.com/54549125/145159469-62e337dc-c39d-4015-bf2e-2be145673d13.png" width="50%"/>
   <image src="https://user-images.githubusercontent.com/54549125/145159507-af5df6ea-4571-4f28-a895-fedb2799b27b.png" width="50%"/>
