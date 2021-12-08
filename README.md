@@ -1,4 +1,4 @@
-# note
+# Note
 Aplicação simples para fazer anotações. Para fazer a aplicação eu utilizei o padrão de projeto MVC, então criei um mini framework, que posso utilizar a sua base para outros projetos tranquilamente.
 
 ### Colocando para funcionar
