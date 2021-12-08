@@ -9,7 +9,7 @@ Aplicação simples para fazer anotações. Para fazer a aplicação eu utilizei
 
 ### desktop
 
-<image src="https://user-images.githubusercontent.com/54549125/145158948-ed88294c-ceb7-452c-83f8-b5bd8c2fe24a.png" width="100"/>
+<image src="https://user-images.githubusercontent.com/54549125/145158948-ed88294c-ceb7-452c-83f8-b5bd8c2fe24a.png" width="50%"/>
 
 ![Captura de tela de 2021-12-08 03-17-46](https://user-images.githubusercontent.com/54549125/145158948-ed88294c-ceb7-452c-83f8-b5bd8c2fe24a.png)
 ![Captura de tela de 2021-12-08 03-18-22](https://user-images.githubusercontent.com/54549125/145159469-62e337dc-c39d-4015-bf2e-2be145673d13.png)
