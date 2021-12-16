@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Traits;
+namespace Source\Trait;
 
 trait Attributes
 {

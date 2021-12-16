@@ -2,11 +2,9 @@
 
 namespace Source\Model;
 
-use PDO;
 use Exception;
 use PDOException;
-use PDOStatement;
-use Source\Traits\Attributes;
+use Source\Trait\Attributes;
 use Source\Database\Connection;
 use Source\Database\InterfaceConnection;
 

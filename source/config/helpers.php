@@ -43,6 +43,8 @@ function fileWrit(string $file_path, string $content, bool $exists = true): bool
 
         return true;
     }
+
+    return false;
 }
 
 function fileRead(string $file_path, ?int $rows = null): bool|string
