@@ -1,6 +1,6 @@
 {
     "name": "yurioliveira/note",
-    "description": "aplicativo para anotações",
+    "description": "Aplicação simples para fazer anotações",
     "minimum-stability": "stable",
     "authors": [
         {
