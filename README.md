@@ -1,5 +1,5 @@
 # Note
-Aplicação simples para fazer anotações. Para fazer a aplicação eu utilizei o padrão de projeto MVC, então criei um mini framework, que posso utilizar a sua base para outros projetos tranquilamente.
+Aplicação simples para fazer anotações. Para fazer a aplicação eu utilizei o padrão de projeto MVC.
 
 ### Colocando para funcionar
 - Crie a pasta cache dentro da pasta source
