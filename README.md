@@ -14,3 +14,7 @@ Se você quiser testar o projeto localmente pode seguir os passos abaixo.
 
 - Crie uma pasta chamada cache dentro da pasta source
 - Crie o arquivo app.php dentro da pasta config utilizando o exemplo "app.sample.php"
+
+### Contato
+
+- Linkedin [@Yuri Oliveira](https://www.linkedin.com/in/yuri-oliveira-0703801a2/)
